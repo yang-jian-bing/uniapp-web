@@ -5,7 +5,6 @@ import checkUpdate from "@/uni_modules/uni-upgrade-center-app/utils/check-update
 
 export default {
   onLaunch: function () {
-    debugger
     // #ifdef H5
     console.log(
       `%c hello uniapp %c v${version} `,

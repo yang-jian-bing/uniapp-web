@@ -1,45 +1,46 @@
-import axios from 'axios' // 只用来minio上传文件
-var config = require('./config.js') // 统一的网络请求方法
-// import {
-//   AppType
-// } from './constant.js'
+// request.js
+// 通常可以吧 baseUrl 单独放在一个 js 文件了
+const baseUrl = 'http://www.shuainiba.com:3003'
 
-// create an axios instance
-const service = axios.create({
-  baseURL: config.domain, // url = base url + request url
-  // withCredentials: true, // send cookies when cross-domain requests
-  timeout: 50000 // request timeout
-})
+const request = (options = {}) => {
+  // 在这里可以对请求头进行一些设置
+  // 例如：
+  // options.header = {
+  //      "Content-Type": "application/x-www-form-urlencoded"
+  // }
+  return new Promise((resolve, reject) => {
+    uni.request({
+      url: baseUrl + options.url || '',
+      method: options.type || 'GET',
+      data: options.data || {},
+      header: options.header || {}
+    }).then(data => {
+      let [err, res] = data;
+      resolve(res);
+    }).catch(error => {
+      reject(error)
+    })
+  });
+}
 
-// request interceptor
-service.interceptors.request.use(
-  config => {
-    // do something before request is sent
-    if (config.params) {
-      config.params.checkSum = 'starlab'
-    }
-    config.headers['Authorization'] = uni.getStorageSync('token')
-    return config
-  },
-  error => {
-    console.log(error)
-    return Promise.reject(error)
-  }
-)
+const get = (url, data, options = {}) => {
 
-service.interceptors.response.use(
-  response => {
-    const res = response.data
-  
-    if (response.status) {
-      return Promise.resolve(res)
-    }
-    return Promise.reject(res)
-  },
-  error => {
-    console.log('err' + error)
-    return Promise.reject(error)
-  }
-)
+  options.type = 'GET';
+  options.data = data;
+  options.url = url;
+  return request(options)
+}
 
-export default service
+const post = (url, data, options = {}) => {
+  options.type = 'POST';
+  options.data = data;
+  options.url = url;
+  return request(options)
+}
+
+
+export default {
+  request,
+  get,
+  post
+}

@@ -3,7 +3,7 @@
     <view class="con">
       <view class="logo-box">
         <image
-          src="@/assets/img/login/min-logo.jpg"
+          src="../../../assets/img/login/min-logo.jpg"
           class="min-logo"
           alt=""
           srcset=""
@@ -45,7 +45,6 @@
 </template>
 
 <script>
-// import { getAction, postAction } from "../../../utils/manage.js";
 import crypto from "crypto";
 export default {
   data() {
@@ -84,11 +83,12 @@ export default {
         checkSum: "starlab",
       };
 
-      postAction("/rest/user/login?checkSum=starlab", params).then(
+      this.$request.post("/rest/user/login?checkSum=starlab", params).then(
         (res) => {
           Object.keys(res).map((key) => {
             uni.setStorageSync(key, res[key]);
           });
+          uni.setStorageSync('token', res.phoneNum);
           uni.showToast({
             title: "登录成功",
             icon: "success",
@@ -128,9 +128,7 @@ export default {
       sha1.update(this.captchaVerification.split("").reverse().join(""));
       const code_sha = sha1.digest("hex").substring(10, 20);
       condition.sign = code_sha;
-
-      // request(params);
-      getAction("/rest/user/verif-code", condition)
+      this.$request.get("/rest/user/verif-code", condition)
         .then(() => {
           uni.showToast({
             title: "发送成功",
