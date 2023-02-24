@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { getAction, postAction } from "../../../utils/manage.js";
+// import { getAction, postAction } from "../../../utils/manage.js";
 import crypto from "crypto";
 export default {
   data() {

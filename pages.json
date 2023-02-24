@@ -91,20 +91,20 @@
       }
     }
   ],
-  // "subPackages": [
-  //   {
-  //     "root": "pages/API",
-  //     "pages": [
-  //       {
-  //         "path": "login/login",
-  //         "style": {
-  //           "titleNView": false,
-  //           "navigationBarTitleText": "授权登录"
-  //         }
-  //       }
-  //     ]
-  //   }
-  // ],
+  "subPackages": [
+    {
+      "root": "pages/API",
+      "pages": [
+        {
+          "path": "login/login",
+          "style": {
+            "titleNView": false,
+            "navigationBarTitleText": "授权登录"
+          }
+        }
+      ]
+    }
+  ],
   "globalStyle": {
     "pageOrientation": "portrait",
     "navigationBarTitleText": "Hello uniapp",

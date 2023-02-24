@@ -5,18 +5,14 @@ import checkUpdate from "@/uni_modules/uni-upgrade-center-app/utils/check-update
 
 export default {
   onLaunch: function () {
+    debugger
     // #ifdef H5
     console.log(
       `%c hello uniapp %c v${version} `,
       "background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff",
       "background:#007aff ;padding: 1px; border-radius: 0 3px 3px 0;  color: #fff; font-weight: bold;"
     );
-    let islogin = uni.getStorageSync("token");
-    if (!islogin) {
-      uni.reLaunch({
-        url: "/pages/API/login/login",
-      });
-    }
+
     // #endif
     // 线上示例使用
     // console.log('%c uni-app官方团队诚邀优秀前端工程师加盟，一起打造更卓越的uni-app & uniCloud，欢迎投递简历到 hr2013@dcloud.io', 'color: red');
@@ -27,7 +23,12 @@ export default {
       // 真机运行不需要检查更新，真机运行时appid固定为'HBuilder'，这是调试基座的appid
       // checkUpdate();
     }
-
+    let islogin = uni.getStorageSync("token");
+    if (!islogin) {
+      uni.reLaunch({
+        url: "/pages/API/login/login",
+      });
+    }
     // 一键登录预登陆，可以显著提高登录速度
     // uni.preLogin({
     // 	provider: 'univerify',
