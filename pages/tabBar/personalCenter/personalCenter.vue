@@ -46,7 +46,7 @@
 
 <script>
 
-import { postAction } from "@/utils/manage.js";
+// import { postAction } from "@/utils/manage.js";
 export default {
   components: {},
   data() {
