@@ -14,6 +14,7 @@ function hasPermission(url) {
 uni.addInterceptor('navigateTo', {
     // 页面跳转前进行拦截, invoke根据返回值进行判断是否继续执行跳转
     invoke(e) {
+        debugger
         if (!hasPermission(e.url)) {
             uni.reLaunch({
                 url: '/pages/API/login/login'
@@ -29,6 +30,7 @@ uni.addInterceptor('navigateTo', {
 uni.addInterceptor('switchTab', {
     // tabbar页面跳转前进行拦截
     invoke(e) {
+        debugger
         if (!hasPermission(e.url)) {
             uni.reLaunch({
                 url: '/pages/API/login/login'
