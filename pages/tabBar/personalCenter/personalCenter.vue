@@ -2,7 +2,7 @@
   <view class="myConter">
     <view class="myHeader">
       <view class="txBox">
-        <img
+        <image
           round
           width="58px"
           height="58px"
@@ -11,11 +11,10 @@
         />
       </view>
       <view class="infoBox">
-        <p class="isName">{{ userObj.name }}</p>
-        <p class="isZWinfo">
-        
-          <span>{{ userObj.phone }}</span>
-        </p>
+        <view class="isName">{{ userObj.name }}</view>
+        <view class="isZWinfo">
+          <view>{{ userObj.phone }}</view>
+        </view>
       </view>
     </view>
     <view
@@ -27,15 +26,15 @@
       <!-- 使用 title 插槽来自定义标题 -->
       <view class="flex-between">
         <view class="flex align-items">
-          <view class="img-100 m-r-10" style="height: 24px; width: 24px">
-            <img :src="item.icon" />
+          <view class="img-100 m-r-10">
+            <image :src="item.icon"  style="height: 24px; width: 24px" />
           </view>
           <view class="col-1b1b font-14">
             {{ item.text }}
           </view>
         </view>
         <view>
-          <span class="icon iconfont icon-arrow-right font-20"></span>
+          <view class="icon iconfont icon-arrow-right font-20"></view>
         </view>
       </view>
     </view>
@@ -47,8 +46,7 @@
 
 <script>
 
-// import "@/assets/font/iconfont.js";
-import { postAction } from "@/utils/manage.js";
+// import { postAction } from "@/utils/manage.js";
 export default {
   components: {},
   data() {

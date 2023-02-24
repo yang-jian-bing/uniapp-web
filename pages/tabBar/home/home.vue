@@ -2,16 +2,15 @@
   <view class="page">
     <view class="header-box">
       <view class="pageheaders">
-        <view @click="showPicker = true"
-          >{{ currentHouse.address }}</view>
+        <view @click="showPicker = true">{{ currentHouse.address }}</view>
         <view>
-          <img
+          <image
             src="../../../assets/img/home-icon/sqtz.jpg"
             class="img-100"
             alt=""
             srcset=""
           />
-          <img
+          <image
             src="../../../assets/img/home-icon/dh.jpg"
             class="img-100 m-l-15"
             alt=""
@@ -29,40 +28,60 @@
       <view class="flex m-t-10 p-b-20">
         <view class="min-icon">
           <view class="text-center">
-            <view class="icon iconfont">&#xe7f1;</view>
+            <image
+              src="../../../assets/img/home-icon/wdfw.png"
+              class="home-nav"
+              alt=""
+              srcset=""
+            />
           </view>
-          <p class="min-title">我的房屋</p>
+          <view class="min-title">我的房屋</view>
         </view>
         <view class="min-icon">
           <view class="text-center">
-            <view class="icon iconfont">&#xe8b1;</view>
+            <image
+              src="../../../assets/img/home-icon/wyfw.png"
+              class="home-nav"
+              alt=""
+              srcset=""
+            />
           </view>
-          <p class="min-title">物业服务</p>
+          <view class="min-title">物业服务</view>
         </view>
         <view class="min-icon" @click="goPage('paymentTypePage')">
           <view class="text-center">
-            <view class="icon iconfont">&#xe88d;</view>
+            <image
+              src="../../../assets/img/home-icon/qjf.png"
+              class="home-nav"
+              alt=""
+              srcset=""
+            />
           </view>
-          <p class="min-title">去缴费</p>
+          <view class="min-title">去缴费</view>
         </view>
         <view class="min-icon">
           <view class="text-center">
-            <view class="icon iconfont">&#xfaf2;</view>
-            <!-- <img src="../../assets/img/home-icon/gzbx.jpg" class="img-40" alt="" srcset=""> -->
+            <image
+              src="../../../assets/img/home-icon/ggbx.png"
+              class="home-nav"
+              alt=""
+              srcset=""
+            />
           </view>
-          <p class="min-title">故障报修</p>
+          <view class="min-title">故障报修</view>
         </view>
       </view>
     </view>
     <view class="main-box">
-      <view class="module-icon" :key="index" v-for="(item, index) in moduleList">
+      <view
+        class="module-icon"
+        :key="index"
+        v-for="(item, index) in moduleList"
+      >
         <view class="module-icon-img">
-          <!-- <svg class="icon svg-icon" aria-hidden="true">
-            <use v-bind:xlink:href="item.icon"></use>
-          </svg> -->
-          <img :src="item.imgUrl" alt="" />
+          <image :src="item.imgUrl" alt="" />
         </view>
-        <p class="module-title">{{ item.name }}</p>
+        <view class="module-title">{{ item.name }}</view>
       </view>
     </view>
     <!-- <van-popup v-model="showPicker" position="bottom">
@@ -80,9 +99,7 @@
 </template>
 
 <script>
-import { getAction } from "../../../utils/manage.js";
-
-// import "../../../assets/font/iconfont.js";
+// import { getAction } from "../../../utils/manage.js";
 export default {
   components: {},
   data() {
@@ -230,7 +247,7 @@ export default {
     };
   },
   created() {
-    this.getHouses();
+    // this.getHouses();
   },
   methods: {
     getHouses() {
@@ -260,7 +277,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// @import "../../../assets/font/iconfont.css";
+.home-nav{
+  width: 40px;
+  height: 40px;
+  margin-top: 15px;
+}
 .home-search {
   height: 40px;
   line-height: 40px;
@@ -352,8 +373,9 @@ export default {
   padding-bottom: 20px;
 }
 .module-icon-img {
-  img {
-    width: 100%;
+  image {
+    width: 100px;
+    height: 100px;
   }
 }
 .module-title {
