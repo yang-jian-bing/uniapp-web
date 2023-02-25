@@ -9,7 +9,7 @@
           srcset=""
         />
       </view>
-      <view class="loginTitle">橄榄海1</view>
+      <view class="loginTitle">橄榄海</view>
       <!-- 验证码登录 -->
       <view class="item-box">
         <view class="item">
@@ -85,10 +85,16 @@ export default {
 
       this.$request.post("/rest/user/login?checkSum=starlab", params).then(
         (res) => {
-          Object.keys(res).map((key) => {
-            uni.setStorageSync(key, res[key]);
+          if (res.data.code === 1) {
+            uni.showToast({
+              title: res.data.message,
+              icon: "error",
+            });
+            return;
+          }
+          Object.keys(res.data).map((key) => {
+            uni.setStorageSync(key, res.data[key]);
           });
-          uni.setStorageSync('token', res.phoneNum);
           uni.showToast({
             title: "登录成功",
             icon: "success",
@@ -128,7 +134,8 @@ export default {
       sha1.update(this.captchaVerification.split("").reverse().join(""));
       const code_sha = sha1.digest("hex").substring(10, 20);
       condition.sign = code_sha;
-      this.$request.get("/rest/user/verif-code", condition)
+      this.$request
+        .get("/rest/user/verif-code", condition)
         .then(() => {
           uni.showToast({
             title: "发送成功",

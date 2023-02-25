@@ -27,7 +27,7 @@
       <view class="flex-between">
         <view class="flex align-items">
           <view class="img-100 m-r-10">
-            <image :src="item.icon"  style="height: 24px; width: 24px" />
+            <image :src="item.icon" style="height: 24px; width: 24px" />
           </view>
           <view class="col-1b1b font-14">
             {{ item.text }}
@@ -39,13 +39,12 @@
       </view>
     </view>
     <view class="p-20">
-      <button type="primary" @click="logout">退出登录</button>
+      <button type="warn" @click="logout">退出登录</button>
     </view>
   </view>
 </template>
 
 <script>
-
 // import { postAction } from "@/utils/manage.js";
 export default {
   components: {},
@@ -60,7 +59,7 @@ export default {
         },
         {
           text: "缴费记录",
-          page: "invoiceHistoryList",
+          page: "billToBePaidList",
           icon: require("@/assets/img/personalIcon/lsfpgl.png"),
         },
         {
@@ -80,7 +79,10 @@ export default {
   created() {},
   methods: {
     toPage(page) {
-      this.$bridge.call(page);
+      uni.reLaunch({
+        // 关闭所有页面，打开首页
+        url: `/pages/page/${page}`,
+      });
     },
 
     toPageVer() {
@@ -93,12 +95,12 @@ export default {
     logout() {
       postAction("/rest/user/logout?checkSum=starlab").then(
         (res) => {
-					uni.showToast({
+          uni.showToast({
             title: "退出成功",
             icon: "success",
           });
-					uni.removeStorageSync('token')
-					uni.reLaunch({
+          uni.removeStorageSync("token");
+          uni.reLaunch({
             // 关闭所有页面，打开首页
             url: "/pages/API/login/login",
           });
@@ -124,8 +126,8 @@ export default {
 
 <style lang="scss" scoped>
 // @import "@/assets/font/iconfont.css";
-.iconfont{
-	font-size: 20px;
+.iconfont {
+  font-size: 20px;
 }
 .buttonstyle {
   margin-top: 60px;

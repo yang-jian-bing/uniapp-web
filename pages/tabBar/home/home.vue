@@ -1,5 +1,8 @@
 <template>
   <view class="page">
+    <view class="header-min-box">
+
+    </view>
     <view class="header-box">
       <view class="pageheaders">
         <view @click="showPicker = true">{{ currentHouse.address }}</view>
@@ -248,6 +251,7 @@ export default {
   },
   created() {
     // this.getHouses();
+    console.log(uni.getStorageSync("token"))
   },
   methods: {
     getHouses() {
