@@ -16,7 +16,15 @@ const request = (options = {}) => {
       header: options.header || {}
     }).then(data => {
       let [err, res] = data;
-      resolve(res);
+      if (res.data.code === 0) {
+        resolve(res);
+      } else {
+        uni.showToast({
+          title: res.data.message,
+          icon: "error",
+        });
+        reject(res.data.message)
+      }
     }).catch(error => {
       reject(error)
     })

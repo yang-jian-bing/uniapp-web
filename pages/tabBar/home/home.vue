@@ -1,8 +1,6 @@
 <template>
   <view class="page">
-    <view class="header-min-box">
-
-    </view>
+    <view class="header-min-box"> </view>
     <view class="header-box">
       <view class="pageheaders">
         <view @click="showPicker = true">{{ currentHouse.address }}</view>
@@ -250,14 +248,13 @@ export default {
     };
   },
   created() {
-    // this.getHouses();
-    console.log(uni.getStorageSync("token"))
+    this.getHouses();
   },
   methods: {
     getHouses() {
-      getAction("/rest/user/houses?checkSum=starlab").then(
+      this.$request.get("/rest/user/houses?checkSum=starlab").then(
         (res) => {
-          this.columns = res.houses;
+          this.columns = res.data.houses;
           this.currentHouse = this.columns[0];
           uni.setStorageSync("currentHouse", JSON.stringify(this.columns[0]));
         },
@@ -281,7 +278,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.home-nav{
+.home-nav {
   width: 40px;
   height: 40px;
   margin-top: 15px;

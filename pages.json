@@ -12,7 +12,7 @@
       }
     },
     {
-      "path": "pages/tabBar/API/API",
+      "path": "pages/tabBar/msg/msg",
       "style": {
         "navigationBarTitleText": "",
         "app-plus": {
@@ -21,7 +21,7 @@
       }
     },
     {
-      "path": "pages/tabBar/extUI/extUI",
+      "path": "pages/tabBar/find/find",
       "style": {
         "navigationBarTitleText": "",
         "app-plus": {
@@ -111,13 +111,13 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/tabBar/API/API",
+        "pagePath": "pages/tabBar/msg/msg",
         "iconPath": "static/tab-bar/comments.png",
         "selectedIconPath": "static/tab-bar/comments-hl.png",
         "text": "消息"
       },
       {
-        "pagePath": "pages/tabBar/extUI/extUI",
+        "pagePath": "pages/tabBar/find/find",
         "iconPath": "static/tab-bar/all.png",
         "selectedIconPath": "static/tab-bar/all-hl.png",
         "text": "工作台"

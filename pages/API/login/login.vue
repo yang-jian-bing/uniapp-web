@@ -85,13 +85,6 @@ export default {
 
       this.$request.post("/rest/user/login?checkSum=starlab", params).then(
         (res) => {
-          if (res.data.code === 1) {
-            uni.showToast({
-              title: res.data.message,
-              icon: "error",
-            });
-            return;
-          }
           Object.keys(res.data).map((key) => {
             uni.setStorageSync(key, res.data[key]);
           });
@@ -114,7 +107,7 @@ export default {
       if (this.num != 59) {
         return;
       }
-      const phoneReg = /^[1][3,4,5,7,8][0-9]{9}$/;
+      const phoneReg = /^[1][3,4,5,6.7,8,9][0-9]{9}$/;
       if (!phoneReg.test(this.principal)) {
         uni.showToast({
           title: "请输入正确手机号",
