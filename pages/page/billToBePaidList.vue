@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-02-25 23:04:07
+ * @LastEditTime: 2023-02-26 23:04:11
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
  * @FilePath: \app\pages\page\billToBePaidList.vue
@@ -10,7 +10,7 @@
   <view class="page">
     <view class="header-min-box"></view>
     <uni-nav-bar
-      :title="currentPageTitle"
+      title="缴费列表"
       color="#ffffff"
       background-color="#dd2c34"
       @clickLeft="back"

@@ -47,6 +47,24 @@
         }
       }
     },
+    {
+      "path": "pages/page/billToBePaidDetails",
+      "style": {
+        "navigationBarTitleText": "缴费",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/page/paymentType",
+      "style": {
+        "navigationBarTitleText": "缴费类型",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
 
     {
       "path": "uni_modules/uni-upgrade-center-app/pages/upgrade-popup",

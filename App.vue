@@ -28,10 +28,6 @@ export default {
       // 真机运行不需要检查更新，真机运行时appid固定为'HBuilder'，这是调试基座的appid
       // checkUpdate();
     }
-    uni.showToast({
-      title: islogin,
-      icon: "error",
-    });
     if (!islogin) {
       uni.reLaunch({
         url: "/pages/API/login/login",
@@ -106,6 +102,7 @@ uni-page-body {
 
 /* #endif */
 
+@import "/wxcomponents/vant/common/index.wxss";
 /* 以下样式用于 hello uni-app 演示所需 */
 page {
   background-color: #efeff4;

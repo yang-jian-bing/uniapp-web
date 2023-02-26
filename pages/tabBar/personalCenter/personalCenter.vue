@@ -79,7 +79,7 @@ export default {
   created() {},
   methods: {
     toPage(page) {
-      uni.reLaunch({
+      uni.navigateTo({
         // 关闭所有页面，打开首页
         url: `/pages/page/${page}`,
       });
@@ -93,7 +93,7 @@ export default {
       this.$bridge.call("versionCode", JSON.stringify(obj));
     },
     logout() {
-      postAction("/rest/user/logout?checkSum=starlab").then(
+      this.$request.post("/rest/user/logout?checkSum=starlab").then(
         (res) => {
           uni.showToast({
             title: "退出成功",

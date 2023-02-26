@@ -74,7 +74,13 @@
                     "ifly" : {}
                 },
                 "oauth" : {},
-                "payment" : {},
+                "payment" : {
+                    "weixin" : {
+                        "__platform__" : [ "android" ],
+                        "appid" : "wx3ebeee3617921497",
+                        "UniversalLinks" : ""
+                    }
+                },
                 "ad" : {}
             },
             "orientation" : [ "portrait-primary" ],

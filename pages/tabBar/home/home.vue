@@ -49,7 +49,7 @@
           </view>
           <view class="min-title">物业服务</view>
         </view>
-        <view class="min-icon" @click="goPage('paymentTypePage')">
+        <view class="min-icon" @click="goPage('paymentType')">
           <view class="text-center">
             <image
               src="../../../assets/img/home-icon/qjf.png"
@@ -100,12 +100,12 @@
 </template>
 
 <script>
-// import { getAction } from "../../../utils/manage.js";
 export default {
-  components: {},
+  components: {
+  },
   data() {
     return {
-      showPicker: false,
+      showPicker: true,
       selectName: "",
       selectId: "",
       columns: [
@@ -265,7 +265,9 @@ export default {
     },
 
     goPage(page) {
-      this.$bridge.call(page);
+      uni.navigateTo({
+        url: `/pages/page/${page}`,
+      });
     },
     onConfirm(value) {
       this.selectName = value;
