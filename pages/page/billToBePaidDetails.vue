@@ -8,9 +8,10 @@
 -->
 <template>
   <view class="page">
-    <view class="header-min-box"></view>
     <uni-nav-bar
       title="缴费"
+      :fixed="true"
+      :statusBar="true"
       color="#ffffff"
       background-color="#dd2c34"
       @clickLeft="back"
