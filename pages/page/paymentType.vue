@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2022-04-23 09:47:32
- * @LastEditTime: 2023-02-27 23:38:57
+ * @LastEditTime: 2023-02-28 15:34:55
  * @LastEditors: YangJianBing
  * @Description: 
  * @FilePath: \app\pages\page\paymentType.vue
@@ -65,7 +65,6 @@ export default {
       uni.navigateBack();
     },
     goPage(type) {
-      debugger;
       uni.setStorageSync("paymentType", type);
       uni.navigateTo({
         url: `/pages/page/billToBePaidDetails`,

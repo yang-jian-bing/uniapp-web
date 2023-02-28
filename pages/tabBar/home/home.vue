@@ -229,19 +229,19 @@ export default {
         {
           name: "家装",
           id: "",
-          imgUrl: require("../../../assets/img/home/jzfw.jpg"),
+          imgUrl: require("../../../assets/img/home/jzfw.png"),
           icon: "#icon-luntan",
         },
         {
           name: "定制实木家具",
           id: "",
-          imgUrl: require("../../../assets/img/home/dzsmjj.jpg"),
+          imgUrl: require("../../../assets/img/home/dzsmjj.png"),
           icon: "#icon-luntan",
         },
         {
           name: "定制门窗",
           id: "",
-          imgUrl: require("../../../assets/img/home/dzmc.jpg"),
+          imgUrl: require("../../../assets/img/home/dzmc.png"),
           icon: "#icon-luntan",
         },
       ],
@@ -377,8 +377,9 @@ export default {
 }
 .module-icon-img {
   image {
-    width: 100px;
-    height: 100px;
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
   }
 }
 .module-title {

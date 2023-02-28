@@ -184,6 +184,7 @@ export default {
 .min-logo {
   width: 68px;
   height: 68px;
+  border-radius: 10px;
 }
 .loginTitle {
   text-align: center;

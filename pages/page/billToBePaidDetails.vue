@@ -138,7 +138,6 @@ export default {
       )
     },
     blur() {
-      debugger
       this.obj.endTime = dayjs(this.obj.beginTime)
         .add(this.duration, 'month')
         .format('YYYY-MM-DD')
