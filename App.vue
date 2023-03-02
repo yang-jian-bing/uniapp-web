@@ -102,7 +102,6 @@ uni-page-body {
 
 /* #endif */
 
-@import "/wxcomponents/vant/common/index.wxss";
 /* 以下样式用于 hello uni-app 演示所需 */
 page {
   background-color: #efeff4;
