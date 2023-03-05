@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-02-26 23:04:11
+ * @LastEditTime: 2023-03-05 20:38:28
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
  * @FilePath: \app\pages\page\billToBePaidList.vue
@@ -18,29 +18,53 @@
       left-icon="left"
     ></uni-nav-bar>
     <view class="flex p-10">
-      <view class="pay-type">全部</view>
-      <view class="pay-type">物业费</view>
-      <view class="pay-type">电费</view>
-      <view class="pay-type">水费</view>
-      <view class="pay-type">暖气费</view>
-      <view class="pay-type">停车费</view>
+      <view
+        class="pay-type"
+        :class="[type === '' ? 'pay-electricity' : '']"
+        @click="payType('')"
+        >全部</view
+      >
+      <view
+        class="pay-type"
+        :class="[type === 'WYF' ? 'pay-electricity' : '']"
+        @click="payType('WYF')"
+        >物业费</view
+      >
+      <view
+        class="pay-type"
+        :class="[type === 'DF' ? 'pay-electricity' : '']"
+        @click="payType('DF')"
+        >电费</view
+      >
+      <view
+        class="pay-type"
+        :class="[type === 'SF' ? 'pay-electricity' : '']"
+        @click="payType('SF')"
+        >水费</view
+      >
+      <view
+        class="pay-type"
+        :class="[type === 'TCF' ? 'pay-electricity' : '']"
+        @click="payType('TCF')"
+        >停车费</view
+      >
     </view>
-    <view class="pay-list-box p-10 p-t-0">
+    <view class="pay-list-box p-10 p-t-0" v-if="list.length > 0">
       <view
         class="pay-list-item"
-        @click="goPage()"
+        @click="goPage(item)"
         v-for="(item, index) in list"
         :key="index"
       >
         <view class="flex">
-          <view class="pay-list-item-title">{{ item.housing }}</view>
-          <view class="pay-property pay-type-item" v-if="item.type == 1"
+          <view class="pay-list-item-title">{{ item.payNo }}</view>
+          <view class="pay-property pay-type-item" v-if="item.type == 'WYF'"
             >物业费</view
           >
-          <view class="pay-water pay-type-item" v-if="item.type == 2"
+          <view class="pay-water pay-type-item" v-if="item.type == 'SF'"
             >水费</view
           >
-          <view class="pay-electricity pay-type-item" v-if="item.type == 3"
+          <view class="pay-electricity pay-type-item" v-if="item.type == 'DF'"
             >电费</view
           >
         </view>
@@ -50,61 +74,48 @@
             <view class="font-bold">{{ item.amount }}</view>
           </view>
         </view>
+        <view class="flex-between m-t-10">
+          <view class="font-14">缴费日期：</view>
+          <view class="font-14">
+            <view class="font-bold">{{ item.time }}</view>
+          </view>
+        </view>
+        <view class="flex-between m-t-10">
+          <view class="font-14">缴费开始时间：</view>
+          <view class="font-14">
+            <view class="font-bold">{{ item.beginTime }}</view>
+          </view>
+        </view>
+        <view class="flex-between m-t-10">
+          <view class="font-14">缴费结束时间：</view>
+          <view class="font-14">
+            <view class="font-bold">{{ item.endTime }}</view>
+          </view>
+        </view>
       </view>
     </view>
+    <view v-else class="text-center p-20"> 暂无数据 </view>
   </view>
 </template>
 
 <script>
-// import { Button, Popup, Picker, Search } from 'vant'
-// import { getAction } from '@/api/manage'
+import dayjs from 'dayjs';
 export default {
-  components: {
-    // [Button.name]: Button,
-    // [Popup.name]: Popup,
-    // [Picker.name]: Picker,
-    // [Search.name]: Search
-  },
+  components: {},
   data() {
+    const currentHouse = uni.getStorageSync("currentHouse");
     return {
-      currentPageTitle: '',
-      list: [
-        {
-          id: 1212,
-          payCostNo: "202110160001", // 缴费编号
-          housing: "缤纷南郡2号楼3单元3202",
-          type: 1, // 费用类型，1.物业费，2.水费，3.电费
-          amount: 543.21, // 金额
-          startTime: "2021-01-12", // 计费开始时间
-          endTime: "2021-08-12", // 计费结束时间
-        },
-        {
-          id: 1212,
-          payCostNo: "202110160001", // 缴费编号
-          housing: "缤纷南郡2号楼3单元3202",
-          type: 2, // 费用类型，1.物业费，2.水费，3.电费
-          amount: 55.0, // 金额
-          startTime: "2021-01-12", // 计费开始时间
-          endTime: "2021-08-12", // 计费结束时间
-        },
-        {
-          id: 1212,
-          payCostNo: "202110160001", // 缴费编号
-          housing: "缤纷南郡2号楼3单元3202",
-          type: 3, // 费用类型，1.物业费，2.水费，3.电费
-          amount: 234.55, // 金额
-          startTime: "2021-01-12", // 计费开始时间
-          endTime: "2021-08-12", // 计费结束时间
-        },
-      ],
+      currentHouse: JSON.parse(currentHouse),
+      currentPageTitle: "",
+      type: "",
+      list: [],
     };
   },
   created() {
     let pages = getCurrentPages(); //页面示例
     let page = pages[pages.length - 1]; //当前页面实例
     this.currentPageTitle = page.$holder.navigationBarTitleText; //当前页面标题
-
-    // this.getList()
+    this.getList();
   },
   methods: {
     back() {
@@ -113,21 +124,32 @@ export default {
     getList() {
       const p = {
         checkSum: "starlab",
-        houseId: "",
-        type: "",
+        // houseId: this.currentHouse.houseId,
+        type: this.type,
       };
-      getAction("/rest/pay/pay-list", p).then(
+      this.$request.get("/rest/pay/pay-list", p).then(
         (res) => {
-          this.columns = res.houses;
-          this.currentHouse = this.columns[0];
+          this.list = res.data.data.map(item=>{
+            item.time = dayjs(item.time).format('YYYY-MM-DD HH:ss:mm')
+            item.beginTime = dayjs(item.beginTime).format('YYYY-MM-DD')
+            item.endTime = dayjs(item.endTime).format('YYYY-MM-DD')
+            return item
+          });
         },
         (err) => {
           console.log(err);
         }
       );
     },
-    goPage() {
-      this.$bridge.call("billToBePaidDetails");
+    goPage(item) {
+      uni.setStorageSync("payNo", item.payNo);
+      uni.navigateTo({
+        url: `/pages/page/payDetails`,
+      });
+    },
+    payType(type) {
+      this.type = type;
+      this.getList();
     },
     onConfirm(value) {
       this.selectName = value.text;

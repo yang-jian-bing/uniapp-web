@@ -57,6 +57,15 @@
       }
     },
     {
+      "path": "pages/page/payDetails",
+      "style": {
+        "navigationBarTitleText": "缴费详情",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
       "path": "pages/page/paymentType",
       "style": {
         "navigationBarTitleText": "缴费类型",

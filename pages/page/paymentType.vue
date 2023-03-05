@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2022-04-23 09:47:32
- * @LastEditTime: 2023-02-28 15:34:55
+ * @LastEditTime: 2023-03-05 16:34:01
  * @LastEditors: YangJianBing
  * @Description: 
  * @FilePath: \app\pages\page\paymentType.vue
@@ -21,7 +21,11 @@
       <view class="pay-box flex-between">
         <view class="pay-type b-b b-r" @click="goPage('WYF')">
           <view class="text-center">
-            <view class="icon iconfont">&#xfb49;</view>
+            <image
+              src="../../assets/img/pay-type/wyf.png"
+              alt=""
+              srcset=""
+            />
           </view>
 
           <view class="text-center m-t-10">物业费</view>
@@ -29,7 +33,11 @@
 
         <view class="pay-type b-b" @click="goPage('SF')">
           <view class="text-center">
-            <view class="icon iconfont">&#xfaa9;</view>
+            <image
+              src="../../assets/img/pay-type/sf.png"
+              alt=""
+              srcset=""
+            />
           </view>
           <view class="text-center m-t-10">水费</view>
         </view>
@@ -37,14 +45,22 @@
       <view class="pay-box flex-between">
         <view class="pay-type b-r" @click="goPage('CWGLF')">
           <view class="text-center">
-            <view class="icon iconfont">&#xfba5;</view>
+            <image
+              src="../../assets/img/pay-type/cwf.png"
+              alt=""
+              srcset=""
+            />
           </view>
           <view class="text-center m-t-10">车位管理费</view>
         </view>
 
         <view class="pay-type" @click="goPage('QT')">
           <view class="text-center">
-            <view class="icon iconfont">&#xfbd2;</view>
+            <image
+              src="../../assets/img/pay-type/qt.png"
+              alt=""
+              srcset=""
+            />
           </view>
           <view class="text-center m-t-10">其他</view>
         </view>
@@ -92,10 +108,10 @@ export default {
     height: calc(50vw - 15px);
     padding: calc(11vw);
     width: 50%;
-    .iconfont {
-      font-size: 40px;
+    image {
+      width: 60px;
+      height: 60px;
       margin: 0 auto;
-      color: #dd2c34;
     }
   }
 }

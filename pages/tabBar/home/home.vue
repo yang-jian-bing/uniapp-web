@@ -24,7 +24,6 @@
           <view class="search-content">物业</view>
           <view class="search-icon">搜索</view>
         </view>
-        <!-- <van-search shape="round" placeholder="请输入搜索关键词" /> -->
       </view>
       <view class="flex m-t-10 p-b-20">
         <view class="min-icon">

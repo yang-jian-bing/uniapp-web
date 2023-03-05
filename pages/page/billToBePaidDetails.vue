@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:35:24
- * @LastEditTime: 2023-03-03 00:02:31
+ * @LastEditTime: 2023-03-03 00:06:39
  * @LastEditors: YangJianBing
  * @Description: 待缴费详情
  * @FilePath: \app\pages\page\billToBePaidDetails.vue
@@ -136,10 +136,13 @@ export default {
         checkSum: "starlab",
         ...this.obj,
       };
+      uni.showLoading({
+        title: "加载中",
+      });
+
       this.$request.post("/rest/pay/order", p).then(
         (res) => {
-          debugger
-          const pay = res.data.data
+          const pay = res.data.data;
           const params = JSON.stringify({
             appid: pay.appid,
             partnerid: pay.partnerid,
@@ -153,15 +156,16 @@ export default {
             provider: "wxpay",
             orderInfo: params,
             success: function (res) {
-              uni.showModal({
-                title: "提示",
-                content: "支付成功",
-                showCancel: false,
-                success: (res) => {
-                  v.isSuccess = true;
-                },
+              uni.hideLoading();
+              uni.showToast({
+                title: "支付成功", //显示的文字
+                duration: 2000, //显示多少时间，默认1500毫秒
+                icon: "success", //自定义显示的图标，默认成功success，错误error,加载loading，不显示图标是none
               });
-              console.log("success:" + JSON.stringify(res));
+              uni.setStorageSync("payNo", pay.payNo);
+              uni.navigateTo({
+                url: `/pages/page/payDetails`,
+              });
             },
             fail: function (err) {
               uni.showModal({
