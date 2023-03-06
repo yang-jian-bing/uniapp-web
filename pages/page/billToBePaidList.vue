@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-03-05 20:38:28
+ * @LastEditTime: 2023-03-05 23:11:23
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
  * @FilePath: \app\pages\page\billToBePaidList.vue
@@ -30,12 +30,7 @@
         @click="payType('WYF')"
         >物业费</view
       >
-      <view
-        class="pay-type"
-        :class="[type === 'DF' ? 'pay-electricity' : '']"
-        @click="payType('DF')"
-        >电费</view
-      >
+     
       <view
         class="pay-type"
         :class="[type === 'SF' ? 'pay-electricity' : '']"
@@ -44,9 +39,15 @@
       >
       <view
         class="pay-type"
-        :class="[type === 'TCF' ? 'pay-electricity' : '']"
-        @click="payType('TCF')"
-        >停车费</view
+        :class="[type === 'CWGLF' ? 'pay-electricity' : '']"
+        @click="payType('CWGLF')"
+        >车位管理费</view
+      >
+      <view
+        class="pay-type"
+        :class="[type === 'CWGLF' ? 'pay-electricity' : '']"
+        @click="payType('QT')"
+        >其它</view
       >
     </view>
     <view class="pay-list-box p-10 p-t-0" v-if="list.length > 0">
@@ -103,18 +104,13 @@ import dayjs from 'dayjs';
 export default {
   components: {},
   data() {
-    const currentHouse = uni.getStorageSync("currentHouse");
     return {
-      currentHouse: JSON.parse(currentHouse),
-      currentPageTitle: "",
-      type: "",
+      currentHouse: uni.getStorageSync("currentHouse"),
+      type: null,
       list: [],
     };
   },
   created() {
-    let pages = getCurrentPages(); //页面示例
-    let page = pages[pages.length - 1]; //当前页面实例
-    this.currentPageTitle = page.$holder.navigationBarTitleText; //当前页面标题
     this.getList();
   },
   methods: {

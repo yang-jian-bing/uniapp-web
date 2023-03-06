@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:35:24
- * @LastEditTime: 2023-03-03 00:06:39
+ * @LastEditTime: 2023-03-05 22:04:50
  * @LastEditors: YangJianBing
  * @Description: 待缴费详情
  * @FilePath: \app\pages\page\billToBePaidDetails.vue
@@ -94,10 +94,9 @@ import dayjs from "dayjs";
 export default {
   components: {},
   data() {
-    const currentHouse = uni.getStorageSync("currentHouse");
     return {
       paymentType: uni.getStorageSync("paymentType"),
-      currentHouse: JSON.parse(currentHouse),
+      currentHouse: uni.getStorageSync("currentHouse"),
       duration: null, // 缴费时长
       obj: {
         beginTime: "2022-02-01", // 上次缴费时间
@@ -122,7 +121,7 @@ export default {
         })
         .then(
           (res) => {
-            this.obj.beginTime = res.data.endTime || "2023-01-01";
+            this.obj.beginTime = res.data.data.endTime || "2023-01-01";
           },
           (err) => {
             console.log(err);

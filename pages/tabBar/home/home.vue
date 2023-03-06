@@ -255,7 +255,7 @@ export default {
         (res) => {
           this.columns = res.data.houses;
           this.currentHouse = this.columns[0];
-          uni.setStorageSync("currentHouse", JSON.stringify(this.columns[0]));
+          uni.setStorageSync("currentHouse", this.columns[0]);
         },
         (err) => {
           console.log(err);
@@ -271,7 +271,7 @@ export default {
     onConfirm(value) {
       this.selectName = value;
       this.currentHouse = value;
-      uni.setStorageSync("currentHouse", JSON.stringify(value));
+      uni.setStorageSync("currentHouse", value);
       this.showPicker = false;
     },
   },
