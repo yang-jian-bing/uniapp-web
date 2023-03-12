@@ -9,7 +9,7 @@
           srcset=""
         />
       </view>
-      <view class="loginTitle">橄榄海</view>
+      <view class="loginTitle">橄榄海1</view>
       <!-- 验证码登录 -->
       <view class="item-box">
         <view class="item">

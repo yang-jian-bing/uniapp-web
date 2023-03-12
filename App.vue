@@ -26,7 +26,7 @@ export default {
     // App平台检测升级，服务端代码是通过uniCloud的云函数实现的，详情可参考：https://ext.dcloud.net.cn/plugin?id=4542
     if (plus.runtime.appid !== "HBuilder") {
       // 真机运行不需要检查更新，真机运行时appid固定为'HBuilder'，这是调试基座的appid
-      // checkUpdate();
+      checkUpdate();
     }
     if (!islogin) {
       uni.reLaunch({

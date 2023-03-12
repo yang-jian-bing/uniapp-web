@@ -3,7 +3,9 @@
     <view class="header-min-box"> </view>
     <view class="header-box">
       <view class="pageheaders">
-        <view @click="showPicker = true">{{ currentHouse.address }}</view>
+        <picker @change="houseChange" :value="selectedIndex" range-key="address" :range="columns">
+          <view>{{ currentHouse.address }}</view>
+        </picker>
         <view>
           <image
             src="../../../assets/img/home-icon/sqtz.jpg"
@@ -100,12 +102,11 @@
 
 <script>
 export default {
-  components: {
-  },
+  components: {},
   data() {
     return {
       showPicker: true,
-      selectName: "",
+      selectedIndex: 0,
       selectId: "",
       columns: [
         {
@@ -146,6 +147,32 @@ export default {
           id: "",
           imgUrl: require("../../../assets/img/home/sqsc.png"),
           icon: "#icon-sousuo",
+        },
+        {
+          name: "定制门窗",
+          id: "",
+          imgUrl: require("../../../assets/img/home/dzmc.png"),
+          icon: "#icon-luntan",
+        },
+
+        {
+          name: "上门医疗",
+          id: "",
+          imgUrl: require("../../../assets/img/home/smyl.png"),
+          icon: "#icon-fushi",
+        },
+
+        {
+          name: "电影",
+          id: "",
+          imgUrl: require("../../../assets/img/home/dy.png"),
+          icon: "#icon-fushi",
+        },
+        {
+          name: "约饭",
+          id: "",
+          imgUrl: require("../../../assets/img/home/yf.png"),
+          icon: "#icon-fushi",
         },
         {
           name: "海鲜市场",
@@ -237,12 +264,6 @@ export default {
           imgUrl: require("../../../assets/img/home/dzsmjj.png"),
           icon: "#icon-luntan",
         },
-        {
-          name: "定制门窗",
-          id: "",
-          imgUrl: require("../../../assets/img/home/dzmc.png"),
-          icon: "#icon-luntan",
-        },
       ],
     };
   },
@@ -268,11 +289,10 @@ export default {
         url: `/pages/page/${page}`,
       });
     },
-    onConfirm(value) {
-      this.selectName = value;
-      this.currentHouse = value;
-      uni.setStorageSync("currentHouse", value);
-      this.showPicker = false;
+    houseChange(value) {
+      this.selectedIndex = value.detail.value
+      this.currentHouse = this.columns[this.selectedIndex];
+      uni.setStorageSync("currentHouse", this.currentHouse);
     },
   },
 };
