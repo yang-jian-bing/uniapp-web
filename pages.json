@@ -1,0 +1,169 @@
+{
+  "pages": [
+    // pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/tabBar/home/home",
+      "style": {
+        "navigationBarTitleText": "",
+        "app-plus": {
+          "bounce": "vertical",
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/tabBar/msg/msg",
+      "style": {
+        "navigationBarTitleText": "",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/tabBar/find/find",
+      "style": {
+        "navigationBarTitleText": "",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/tabBar/personalCenter/personalCenter",
+      "style": {
+        "navigationBarTitleText": "个人中心",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/page/billToBePaidList",
+      "style": {
+        "navigationBarTitleText": "缴费列表",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/page/billToBePaidDetails",
+      "style": {
+        "navigationBarTitleText": "缴费",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/page/payDetails",
+      "style": {
+        "navigationBarTitleText": "缴费详情",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/page/paymentType",
+      "style": {
+        "navigationBarTitleText": "缴费类型",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/page/toBePaid",
+      "style": {
+        "navigationBarTitleText": "待缴费",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+
+    {
+      "path": "uni_modules/uni-upgrade-center-app/pages/upgrade-popup",
+      "style": {
+        "app-plus": {
+          "animationDuration": 200,
+          "animationType": "fade-in",
+          "background": "transparent",
+          "backgroundColorTop": "transparent",
+          "popGesture": "none",
+          "scrollIndicator": false,
+          "titleNView": false
+        },
+        "disableScroll": true
+      }
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "pages/API",
+      "pages": [
+        {
+          "path": "login/login",
+          "style": {
+            "titleNView": false,
+            "navigationBarTitleText": "授权登录"
+          }
+        }
+      ]
+    }
+  ],
+  "globalStyle": {
+    "pageOrientation": "portrait",
+    "navigationBarTitleText": "Hello uniapp",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#F8F8F8",
+    "backgroundColorTop": "#F4F5F6",
+    "backgroundColorBottom": "#F4F5F6",
+    "navigationStyle": "custom",
+    "mp-360": {
+      "navigationStyle": "custom"
+    },
+    "app-plus": {
+      "navigationStyle": "custom"
+    },
+    "h5": {
+      "maxWidth": 1190,
+      "navigationBarTextStyle": "black"
+    }
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#dd2c34",
+    "borderStyle": "black",
+    "backgroundColor": "#F8F8F8",
+    "list": [
+      {
+        "pagePath": "pages/tabBar/home/home",
+        "iconPath": "static/tab-bar/home.png",
+        "selectedIconPath": "static/tab-bar/home-hl.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/tabBar/msg/msg",
+        "iconPath": "static/tab-bar/comments.png",
+        "selectedIconPath": "static/tab-bar/comments-hl.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/tabBar/find/find",
+        "iconPath": "static/tab-bar/all.png",
+        "selectedIconPath": "static/tab-bar/all-hl.png",
+        "text": "工作台"
+      },
+      {
+        "pagePath": "pages/tabBar/personalCenter/personalCenter",
+        "iconPath": "static/tab-bar/user-center.png",
+        "selectedIconPath": "static/tab-bar/user-center-hl.png",
+        "text": "我的"
+      }
+    ]
+  }
+}
