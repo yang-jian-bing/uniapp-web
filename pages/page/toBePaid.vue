@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-03-12 19:40:53
+ * @LastEditTime: 2023-03-15 23:19:37
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
  * @FilePath: \app\pages\page\toBePaid.vue
@@ -34,6 +34,9 @@
           >
           <view class="pay-electricity pay-type-item" v-if="item.type == 'DF'"
             >电费</view
+          >
+          <view class="pay-electricity pay-type-item" v-if="item.type == 'CWGLF'"
+            >车位管理费</view
           >
         </view>
         <view class="flex-between m-t-10">
@@ -73,25 +76,18 @@ export default {
     };
   },
   created() {
-    this.latelyPayDate("WYF");
+    this.latelyPayDate();
   },
   methods: {
-    latelyPayDate(type) {
+    latelyPayDate() {
       this.$request
-        .get("/rest/pay/lately-pay-date", {
+        .get("/rest/pay/to-be-paid", {
           houseId: this.currentHouse.houseId,
-          checkSum: "starlab",
-          type,
+          checkSum: "starlab"
         })
         .then(
           (res) => {
-            this.list.push({
-              amount: 402,
-              beginTime: res.data.data.endTime,
-              endTime: "2025-12-01T00:00:00.000Z",
-              houseId: "c0010-cm12-10-1-1201",
-              type,
-            });
+            this.list = res.data.data;
           },
           (err) => {
             console.log(err);
@@ -102,9 +98,10 @@ export default {
       uni.navigateBack();
     },
     goPage(item) {
-      uni.setStorageSync("payNo", item.payNo);
+      uni.setStorageSync("paymentType", item.type);
+      uni.setStorageSync("toBePaid", item);
       uni.navigateTo({
-        url: `/pages/page/payDetails`,
+        url: `/pages/page/billToBePaidDetails`,
       });
     },
   },

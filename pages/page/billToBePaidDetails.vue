@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:35:24
- * @LastEditTime: 2023-03-12 19:59:43
+ * @LastEditTime: 2023-03-15 23:50:18
  * @LastEditors: YangJianBing
  * @Description: 待缴费详情
  * @FilePath: \app\pages\page\billToBePaidDetails.vue
@@ -96,6 +96,7 @@ export default {
     return {
       paymentType: uni.getStorageSync("paymentType"),
       currentHouse: uni.getStorageSync("currentHouse"),
+      toBePaid: uni.getStorageSync("toBePaid"),
       duration: null, // 缴费时长
       obj: {
         beginTime: "2022-02-01", // 上次缴费时间
@@ -105,7 +106,13 @@ export default {
     };
   },
   created() {
-    this.latelyPayDate();
+    if(this.toBePaid){
+      this.obj = this.toBePaid
+      this.duration = this.obj.months
+    }else{
+
+      this.latelyPayDate();
+    }
   },
   methods: {
     back() {
