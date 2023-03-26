@@ -4,6 +4,7 @@
     <view class="main-box">
       <view
         class="module-icon"
+        @click="goPage('constructionPage')"
         :key="index"
         v-for="(item, index) in moduleList"
       >
@@ -237,6 +238,13 @@ export default {
       ],
     };
   },
+  methods: {
+    goPage(page) {
+      uni.navigateTo({
+        url: `/pages/page/${page}`,
+      });
+    },
+  }
 };
 </script>
 

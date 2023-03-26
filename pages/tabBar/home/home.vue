@@ -29,13 +29,13 @@
         </view>
       </view>
       <view>
-        <view class="home-search flex-between">
+        <view class="home-search flex-between" @click="goSearch">
           <view class="search-content">物业</view>
           <view class="search-icon">搜索</view>
         </view>
       </view>
       <view class="flex m-t-10 p-b-20">
-        <view class="min-icon">
+        <view class="min-icon" @click="goPage('myHouse')">
           <view class="text-center">
             <image
               src="../../../assets/img/home-icon/wdfw.png"
@@ -46,7 +46,7 @@
           </view>
           <view class="min-title">我的房屋</view>
         </view>
-        <view class="min-icon">
+        <view class="min-icon" @click="goPage('constructionPage')">
           <view class="text-center">
             <image
               src="../../../assets/img/home-icon/wyfw.png"
@@ -68,7 +68,7 @@
           </view>
           <view class="min-title">去缴费</view>
         </view>
-        <view class="min-icon">
+        <view class="min-icon" @click="goPage('faultRepairReport')">
           <view class="text-center">
             <image
               src="../../../assets/img/home-icon/ggbx.png"
@@ -85,9 +85,10 @@
       <view
         class="module-icon"
         :key="index"
+        @click="goPage('constructionPage')"
         v-for="(item, index) in moduleList"
       >
-        <view class="module-icon-img">
+        <view class="module-icon-img" >
           <image :src="item.imgUrl" alt="" />
         </view>
         <view class="module-title">{{ item.name }}</view>
@@ -378,6 +379,11 @@ export default {
     goPage(page) {
       uni.navigateTo({
         url: `/pages/page/${page}`,
+      });
+    },
+    goSearch(page) {
+      uni.navigateTo({
+        url: `/pages/page/search`,
       });
     },
     houseChange(value) {

@@ -83,6 +83,42 @@
         }
       }
     },
+    {
+      "path": "pages/page/search",
+      "style": {
+        "navigationBarTitleText": "搜索",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/page/myHouse",
+      "style": {
+        "navigationBarTitleText": "我的房屋",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/page/faultRepairReport",
+      "style": {
+        "navigationBarTitleText": "故障报修",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/page/constructionPage",
+      "style": {
+        "navigationBarTitleText": "建设页",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
 
     {
       "path": "uni_modules/uni-upgrade-center-app/pages/upgrade-popup",
