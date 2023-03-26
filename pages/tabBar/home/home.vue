@@ -23,6 +23,7 @@
           <image
             src="../../../assets/img/home-icon/dh.png"
             class="img-100 m-l-15"
+            @click="phone"
             alt=""
             srcset=""
           />
@@ -88,7 +89,7 @@
         @click="goPage('constructionPage')"
         v-for="(item, index) in moduleList"
       >
-        <view class="module-icon-img" >
+        <view class="module-icon-img">
           <image :src="item.imgUrl" alt="" />
         </view>
         <view class="module-title">{{ item.name }}</view>
@@ -375,7 +376,21 @@ export default {
         }
       );
     },
-
+    phone() {
+      uni.makePhoneCall({
+        // 手机号
+        phoneNumber: "18211129003",
+        // 成功回调
+        success: (res) => {
+          console.log("调用成功!");
+        },
+        // 失败回调
+        fail: (res) => {
+          console.log("调用失败!");
+          this.call_phone(); //重复调用一次
+        },
+      });
+    },
     goPage(page) {
       uni.navigateTo({
         url: `/pages/page/${page}`,

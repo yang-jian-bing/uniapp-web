@@ -45,19 +45,9 @@ export default {
       total: 1,
       list: [
         {
-          sendTime: '2021-12-12 12:12',
+          sendTime: '2023-03-12 12:12',
           submitPersonUserName: '通知',
-          title: '物业清明放假三天'
-        },
-        {
-          sendTime: '2021-12-12 12:12',
-          submitPersonUserName: '活动',
-          title: '2021年第一次活动'
-        },
-        {
-          sendTime: '2021-12-12 12:12',
-          submitPersonUserName: '通知',
-          title: '西安马拉松'
+          title: '物业清明放假一天'
         }
       ],
       refreshing: false,

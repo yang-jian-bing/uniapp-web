@@ -2,18 +2,12 @@
   <view class="myConter">
     <view class="myHeader">
       <view class="txBox">
-        <image
-          round
-          width="58px"
-          height="58px"
-          fit="cover"
-          :src="userObj.headPortrait"
-        />
+        <image src="../../../assets/img/people.png" />
       </view>
       <view class="infoBox">
         <!-- <view class="isName">{{ userObj.name }}</view> -->
         <view class="isZWinfo">
-          <view>{{ userObj.phone.split('+86')[1] }}</view>
+          <view>{{ userObj.phone.split("+86")[1] }}</view>
         </view>
       </view>
     </view>
@@ -64,7 +58,7 @@ export default {
         },
         {
           text: "软件升级",
-          page: "",
+          page: "update",
           icon: require("@/assets/img/personalIcon/rjsj.png"),
         },
       ],
@@ -79,6 +73,14 @@ export default {
   created() {},
   methods: {
     toPage(page) {
+      if (page === "update") {
+        uni.showToast({
+          title: "已是最新版本！", //显示的文字
+          duration: 2000, //显示多少时间，默认1500毫秒
+          icon: "success", //自定义显示的图标，默认成功success，错误error,加载loading，不显示图标是none
+        });
+        return;
+      }
       uni.navigateTo({
         // 关闭所有页面，打开首页
         url: `/pages/page/${page}`,
@@ -224,10 +226,10 @@ export default {
   position: relative;
 }
 .txBox {
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  overflow: hidden;
+  image {
+    width: 58px;
+    height: 58px;
+  }
 }
 .txBox > img {
   width: 100%;

@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-03-26 12:08:49
+ * @LastEditTime: 2023-03-26 13:03:35
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
  * @FilePath: \app\pages\page\constructionPage.VUE
@@ -34,7 +34,11 @@ export default {
   created() {
     // this.getList();
   },
-  methods: {},
+  methods: {
+    back() {
+      uni.navigateBack();
+    },
+  },
 };
 </script>
 
