@@ -29,7 +29,7 @@
 						<template v-if="!downloadSuccess">
 							<view class="progress-box flex-column" v-if="downloading">
 								<progress class="progress" border-radius="35" :percent="downLoadPercent"
-									activeColor="#3DA7FF" show-info stroke-width="10" />
+									activeColor="#dd2c34" show-info stroke-width="10" />
 								<view style="width:100%;font-size: 28rpx;display: flex;justify-content: space-around;">
 									<text>{{downLoadingText}}</text>
 									<text>({{downloadedSize}}/{{packageFileSize}}M)</text>
@@ -473,7 +473,7 @@
 	.title {
 		font-size: 33rpx;
 		font-weight: bold;
-		color: #3DA7FF;
+		color: #dd2c34;
 		line-height: 38px;
 	}
 
@@ -528,7 +528,7 @@
 		height: 80rpx;
 		line-height: 80rpx;
 
-		background: linear-gradient(to right, #1785ff, #3DA7FF);
+		background: linear-gradient(to right, #dd2c34, #dd2c34);
 	}
 
 	.flex-column {

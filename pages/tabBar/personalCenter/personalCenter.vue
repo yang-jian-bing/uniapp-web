@@ -216,7 +216,8 @@ export default {
 }
 .myHeader {
   width: 100%;
-  height: 128px;
+  height: 150px;
+  padding-top: 50px;
   margin-bottom: 10px;
   background: #dd2c34;
   background-size: 100% 100%;

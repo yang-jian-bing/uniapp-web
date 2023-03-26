@@ -377,19 +377,7 @@ export default {
       );
     },
     phone() {
-      uni.makePhoneCall({
-        // 手机号
-        phoneNumber: "18211129003",
-        // 成功回调
-        success: (res) => {
-          console.log("调用成功!");
-        },
-        // 失败回调
-        fail: (res) => {
-          console.log("调用失败!");
-          this.call_phone(); //重复调用一次
-        },
-      });
+      plus.device.dial('18211129003', true);
     },
     goPage(page) {
       uni.navigateTo({
