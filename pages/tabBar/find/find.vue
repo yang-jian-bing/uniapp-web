@@ -10,9 +10,6 @@
       <!-- 使用 title 插槽来自定义标题 -->
       <view class="flex-between">
         <view class="flex align-items">
-          <view class="img-100 m-r-10">
-            <image :src="item.icon" style="height: 24px; width: 24px" />
-          </view>
           <view class="col-1b1b font-14">
             {{ item.text }}
           </view>
@@ -32,7 +29,7 @@ export default {
     return {
       list: [
         {
-          text: "我发起的活动",
+          text: "所有活动",
           page: "activityList",
           icon: require("@/assets/img/personalIcon/htgl.png"),
         },
@@ -42,7 +39,7 @@ export default {
           icon: require("@/assets/img/personalIcon/lsfpgl.png"),
         },
         {
-          text: "所有的活动",
+          text: "我发起的活动",
           page: "activityList",
           icon: require("@/assets/img/personalIcon/rjsj.png"),
         },

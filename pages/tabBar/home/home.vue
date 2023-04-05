@@ -47,16 +47,16 @@
           </view>
           <view class="min-title">我的房屋</view>
         </view>
-        <view class="min-icon" @click="goPage('constructionPage')">
+        <view class="min-icon"  @click="phone">
           <view class="text-center">
             <image
-              src="../../../assets/img/home-icon/wyfw.png"
+              src="../../../assets/img/home-icon/kf.png"
               class="home-nav"
               alt=""
               srcset=""
             />
           </view>
-          <view class="min-title">物业服务</view>
+          <view class="min-title">客服</view>
         </view>
         <view class="min-icon" @click="goPage('paymentType')">
           <view class="text-center">
@@ -72,7 +72,7 @@
         <view class="min-icon" @click="goPage('faultRepairReport')">
           <view class="text-center">
             <image
-              src="../../../assets/img/home-icon/ggbx.png"
+              src="../../../assets/img/home-icon/gzbx.jpg"
               class="home-nav"
               alt=""
               srcset=""
@@ -95,17 +95,6 @@
         <view class="module-title">{{ item.name }}</view>
       </view>
     </view>
-    <!-- <van-popup v-model="showPicker" position="bottom">
-      <van-picker
-        required
-        show-toolbar
-        :columns="columns"
-        value-key="address"
-        @confirm="onConfirm"
-        @cancel="showPicker = false"
-      >
-      </van-picker>
-    </van-popup> -->
   </view>
 </template>
 
@@ -120,23 +109,8 @@ export default {
       columns: [],
       currentHouse: {},
       index: 1,
-      newsList: [
-        {
-          title: "求助",
-          content: "本小区有没有可租的房子，联系电话：18787473843",
-        },
-        {
-          title: "车位出租",
-          content: "出租5号楼车位，价格面议，有意者联系18343434344",
-        },
-        {
-          title: "活动",
-          content: "双十一缴物业费送礼品",
-        },
-      ],
-
-      moduleList: [],
-      moduleList1: [
+      moduleList1: [],
+      moduleList: [
         {
           name: "客服",
           id: "",
