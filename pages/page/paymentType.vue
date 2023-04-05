@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2022-04-23 09:47:32
- * @LastEditTime: 2023-03-05 16:34:01
+ * @LastEditTime: 2023-04-05 17:25:03
  * @LastEditors: YangJianBing
  * @Description: 
  * @FilePath: \app\pages\page\paymentType.vue
@@ -9,7 +9,7 @@
 <template>
   <view class="page">
     <uni-nav-bar
-      title="缴费类型"
+      title="缴费"
       :fixed="true"
       :statusBar="true"
       color="#ffffff"
