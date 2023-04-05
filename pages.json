@@ -110,6 +110,43 @@
         }
       }
     },
+   
+    {
+      "path": "pages/page/addFaultRepairReport",
+      "style": {
+        "navigationBarTitleText": "新增故障报修",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/page/activityList",
+      "style": {
+        "navigationBarTitleText": "活动列表",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/page/addActivity",
+      "style": {
+        "navigationBarTitleText": "新增活动",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/page/activityDetails",
+      "style": {
+        "navigationBarTitleText": "活动详情",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
     {
       "path": "pages/page/constructionPage",
       "style": {
@@ -192,7 +229,7 @@
         "pagePath": "pages/tabBar/find/find",
         "iconPath": "static/tab-bar/all.png",
         "selectedIconPath": "static/tab-bar/all-hl.png",
-        "text": "工作台"
+        "text": "活动"
       },
       {
         "pagePath": "pages/tabBar/personalCenter/personalCenter",

@@ -1,17 +1,25 @@
 <template>
-  <view class="page">
+  <view class="myConter">
     <view class="header-min-box"> </view>
-    <view class="main-box">
-      <view
-        class="module-icon"
-        @click="goPage('constructionPage')"
-        :key="index"
-        v-for="(item, index) in moduleList"
-      >
-        <view class="module-icon-img">
-          <image :src="item.imgUrl" alt="" />
+    <view
+      class="p-15 b-b"
+      v-for="(item, index) of list"
+      :key="index"
+      @click="toPage(item.page)"
+    >
+      <!-- 使用 title 插槽来自定义标题 -->
+      <view class="flex-between">
+        <view class="flex align-items">
+          <view class="img-100 m-r-10">
+            <image :src="item.icon" style="height: 24px; width: 24px" />
+          </view>
+          <view class="col-1b1b font-14">
+            {{ item.text }}
+          </view>
         </view>
-        <view class="module-title">{{ item.name }}</view>
+        <view>
+          <view class="icon iconfont icon-arrow-right font-20"></view>
+        </view>
       </view>
     </view>
   </view>
@@ -22,267 +30,161 @@ export default {
   components: {},
   data() {
     return {
-      moduleList: [
+      list: [
         {
-          name: "客服",
-          id: "",
-          imgUrl: require("../../../assets/img/home/kf.svg"),
-          icon: "#icon-gonggao",
+          text: "我发起的活动",
+          page: "activityList",
+          icon: require("@/assets/img/personalIcon/htgl.png"),
         },
         {
-          name: "故障报修",
-          id: "",
-          imgUrl: require("../../../assets/img/home/gzbx.svg"),
-          icon: "#icon-sousuo",
+          text: "我参与的活动",
+          page: "activityList",
+          icon: require("@/assets/img/personalIcon/lsfpgl.png"),
         },
         {
-          name: "杂活",
-          id: "",
-          imgUrl: require("../../../assets/img/home/zh.svg"),
-          icon: "#icon-luntan",
-        },
-
-        {
-          name: "跑腿",
-          id: "",
-          imgUrl: require("../../../assets/img/home/pt.svg"),
-          icon: "#icon-fushi",
-        },
-
-        {
-          name: "社区送菜",
-          id: "",
-          imgUrl: require("../../../assets/img/home/sqsc.svg"),
-          icon: "#icon-fushi",
-        },
-        {
-          name: "海鲜市场",
-          id: "",
-          imgUrl: require("../../../assets/img/home/hxsc.svg"),
-          icon: "#icon-fushi",
-        },
-        {
-          name: "家政服务",
-          id: "",
-          imgUrl: require("../../../assets/img/home/jzfw.svg"),
-          icon: "#icon-fushi",
-        },
-        {
-          name: "干洗",
-          id: "",
-          imgUrl: require("../../../assets/img/home/gx.svg"),
-          icon: "#icon-wuliu",
-        },
-        {
-          name: "接送娃",
-          id: "",
-          imgUrl: require("../../../assets/img/home/jsw.svg"),
-          icon: "#icon-wuliu",
-        },
-        {
-          name: "托幼服务",
-          id: "",
-          imgUrl: require("../../../assets/img/home/tyfw.svg"),
-          icon: "#icon-jiaju",
-        },
-        {
-          name: "家教",
-          id: "",
-          imgUrl: require("../../../assets/img/home/jj.svg"),
-          icon: "#icon-zengsong",
-        },
-        {
-          name: "陪护",
-          id: "",
-          imgUrl: require("../../../assets/img/home/ph.svg"),
-          icon: "#icon-zhanghaoguanli",
-        },
-        {
-          name: "代办汽车保养",
-          id: "",
-          imgUrl: require("../../../assets/img/home/dbqcby.svg"),
-          icon: "#icon-huodong",
-        },
-        {
-          name: "代办事故处理",
-          id: "",
-          imgUrl: require("../../../assets/img/home/dbsgcl.svg"),
-          icon: "#icon-huodong",
-        },
-        {
-          name: "代办验车",
-          id: "",
-          imgUrl: require("../../../assets/img/home/dbyc.svg"),
-          icon: "#icon-jiaoyu",
-        },
-        {
-          name: "极简订制门窗家具",
-          id: "",
-          imgUrl: require("../../../assets/img/home/jjdzmcjj.svg"),
-          icon: "#icon-wupinshenqing",
-        },
-        {
-          name: "极简家装",
-          id: "",
-          imgUrl: require("../../../assets/img/home/jjjz.svg"),
-          icon: "#icon-peisong",
-        },
-        {
-          name: "上门医疗",
-          id: "",
-          imgUrl: require("../../../assets/img/home/smyl.svg"),
-          icon: "#icon-qiche",
-        },
-        {
-          name: "旧物",
-          id: "",
-          imgUrl: require("../../../assets/img/home/jw.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "约饭AA",
-          id: "",
-          imgUrl: require("../../../assets/img/home/yf.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "约电影",
-          id: "",
-          imgUrl: require("../../../assets/img/home/ydy.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "约图书馆",
-          id: "",
-          imgUrl: require("../../../assets/img/home/ytsg.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "约广场舞",
-          id: "",
-          imgUrl: require("../../../assets/img/home/ygcw.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "约交谊舞",
-          id: "",
-          imgUrl: require("../../../assets/img/home/yjjw.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "约足球",
-          id: "",
-          imgUrl: require("../../../assets/img/home/yzq.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "约篮球",
-          id: "",
-          imgUrl: require("../../../assets/img/home/ylq.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "约羽毛球",
-          id: "",
-          imgUrl: require("../../../assets/img/home/yymq.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "约跑步",
-          id: "",
-          imgUrl: require("../../../assets/img/home/ypb.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "约逛公园",
-          id: "",
-          imgUrl: require("../../../assets/img/home/yggy.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "约爬山",
-          id: "",
-          imgUrl: require("../../../assets/img/home/yps.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "约溜娃",
-          id: "",
-          imgUrl: require("../../../assets/img/home/ylw.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "约自由行",
-          id: "",
-          imgUrl: require("../../../assets/img/home/yzyx.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "约自驾游",
-          id: "",
-          imgUrl: require("../../../assets/img/home/yzjy.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "社区DIY团队游",
-          id: "",
-          imgUrl: require("../../../assets/img/home/qqtty.svg"),
-          icon: "#icon-luntan",
-        },
-        {
-          name: "七嘴八舌",
-          id: "",
-          imgUrl: require("../../../assets/img/home/qzbs.svg"),
-          icon: "#icon-luntan",
+          text: "所有的活动",
+          page: "activityList",
+          icon: require("@/assets/img/personalIcon/rjsj.png"),
         },
       ],
     };
   },
+  created() {},
   methods: {
-    goPage(page) {
+    toPage(page) {
       uni.navigateTo({
+        // 关闭所有页面，打开首页
         url: `/pages/page/${page}`,
       });
-    },
-  }
+    }
+  },
 };
 </script>
 
-<style scoped lang="scss">
-.module-icon-img {
-  image {
-    margin-top: 10px;
-    width: 40px;
-    height: 40px;
-  }
+<style lang="scss" scoped>
+// @import "@/assets/font/iconfont.css";
+.iconfont {
+  font-size: 20px;
 }
-.main-box {
+.buttonstyle {
+  margin-top: 60px;
+  width: 90%;
+  left: 5%;
+}
+.content {
+  border-top: 10px solid #eee;
+}
+.cell-none .van-icon {
+  visibility: hidden;
+}
+
+.dateTime {
+  line-height: 47px;
+}
+.time_box {
+  padding: 8px 15px;
+  font-size: 18px;
+}
+.time_box_right {
+  padding: 8px 15px;
+}
+.line {
+  height: 10px;
+  background-color: #eeeeee;
+}
+.date_title {
+  color: #2c82ff;
+  vertical-align: middle;
+}
+.icon_down {
+  padding-left: 7px;
+  vertical-align: middle;
+  color: #868686;
+}
+.date_btn {
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+.date_tabs {
+  padding-bottom: 10px;
+}
+.title_wrap {
   display: flex;
-  flex-wrap: wrap;
-  background: #fff;
-  padding-top: 20px;
+  padding-top: 5px;
 }
-.module-icon {
-  width: 20%;
-  text-align: center;
-  padding-bottom: 20px;
+
+.legend {
+  box-shadow: 0px 2px 8px 0px #cccccc;
+  border-radius: 3px;
+  margin: 7px 10px 0 10px;
 }
-.module-title {
-  font-weight: bold;
+/deep/.van-search__content {
+  background-color: #eee;
+  border-radius: 14px;
 }
-.min-icon {
-  width: 25%;
-  .iconfont {
-    font-size: 40px;
+.legend_wrap {
+  display: flex;
+  justify-content: space-between;
+  color: #1b1b1b;
+}
+.legend_item > view {
+  margin-bottom: 10px;
+}
+.myHeader {
+  width: 100%;
+  height: 150px;
+  padding-top: 50px;
+  margin-bottom: 10px;
+  background: #dd2c34;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  position: relative;
+}
+.txBox {
+  image {
+    width: 58px;
+    height: 58px;
   }
-  .min-title {
-    text-align: center;
-    font-size: 13px;
-    font-weight: 500;
-  }
 }
-.svg-icon {
-  width: 40px;
-  height: 40px;
+.txBox > img {
+  width: 100%;
+  height: 100%;
+}
+.infoBox {
+  padding-left: 16px;
+}
+.isName {
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+}
+.isZWinfo {
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  padding-top: 5px;
+}
+.setting,
+.message {
+  width: 20px;
+  height: 20px;
+}
+.setting {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+.message {
+  position: absolute;
+  top: 40px;
+  right: 24px;
+}
+.myConter .van-cell {
+  padding: 16px;
+}
+.myConter .van-cell::after {
+  right: 0;
 }
 </style>

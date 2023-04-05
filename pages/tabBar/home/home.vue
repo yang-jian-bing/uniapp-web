@@ -117,16 +117,7 @@ export default {
       showPicker: true,
       selectedIndex: 0,
       selectId: "",
-      columns: [
-        {
-          text: "缤纷南郡2号楼三单元1234",
-          id: 12,
-        },
-        {
-          text: "缤纷南郡2号楼四单元1233",
-          id: 12,
-        },
-      ],
+      columns: [],
       currentHouse: {},
       index: 1,
       newsList: [
@@ -143,8 +134,9 @@ export default {
           content: "双十一缴物业费送礼品",
         },
       ],
-      list: [],
-      moduleList: [
+
+      moduleList: [],
+      moduleList1: [
         {
           name: "客服",
           id: "",
@@ -377,7 +369,7 @@ export default {
       );
     },
     phone() {
-      plus.device.dial('18211129003', true);
+      plus.device.dial("18211129003", true);
     },
     goPage(page) {
       uni.navigateTo({

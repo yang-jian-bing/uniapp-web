@@ -1,22 +1,22 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-04-05 11:56:36
+ * @LastEditTime: 2023-04-05 15:12:07
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
- * @FilePath: \app\pages\page\faultRepairReport.vue
+ * @FilePath: \app\pages\page\activityList.vue
 -->
 <template>
   <view class="page">
     <uni-nav-bar
-      title="故障报修"
+      title="活动列表"
       :fixed="true"
       :statusBar="true"
       color="#ffffff"
       rightText="新增"
       background-color="#dd2c34"
       @clickLeft="back"
-      @clickRight="addFaultRepairReport"
+      @clickRight="addActivity"
       left-icon="left"
     ></uni-nav-bar>
     <view class="pay-list-box p-10" v-if="list.length > 0">
@@ -27,41 +27,46 @@
         :key="index"
       >
         <view class="flex-between m-t-10">
-          <view class="font-14">房屋：</view>
+          <view class="font-14">活动标题：</view>
           <view class="font-14">
-            <view class="font-bold">{{ item.house }}</view>
+            <view class="font-bold">{{ item.title }}</view>
           </view>
         </view>
         <view class="flex-between m-t-10">
-          <view class="font-14">类型：</view>
+          <view class="font-14">活动地点：</view>
           <view class="font-14">
-            <view class="font-bold" v-if="item.serviceType === 'BX'">报修</view>
-            <view class="font-bold" v-else-if="item.serviceType === 'TS'">投诉</view>
-            <view class="font-bold" v-else-if="item.serviceType === 'ZX'">咨询</view>
+            <view class="font-bold">{{ item.location }}</view>
+          </view>
+        </view>
+        
+        <view class="flex-between m-t-10">
+          <view class="font-14">发起人：</view>
+          <view class="font-14">
+            <view class="font-bold">{{ item.createdPerson }}</view>
           </view>
         </view>
         <view class="flex-between m-t-10">
-          <view class="font-14">联系人：</view>
+          <view class="font-14">创建时间：</view>
           <view class="font-14">
-            <view class="font-bold">{{ item.contactPerson }}</view>
+            <view class="font-bold">{{ item.createdTime }}</view>
           </view>
         </view>
         <view class="flex-between m-t-10">
-          <view class="font-14">联系电话：</view>
+          <view class="font-14">活动开始时间：</view>
           <view class="font-14">
-            <view class="font-bold">{{ item.contactPhone }}</view>
+            <view class="font-bold">{{ item.startTime }}</view>
           </view>
         </view>
         <view class="flex-between m-t-10">
-          <view class="font-14">描述：</view>
+          <view class="font-14">活动结束时间：</view>
+          <view class="font-14">
+            <view class="font-bold">{{ item.endTime }}</view>
+          </view>
+        </view>
+        <view class="flex-between m-t-10">
+          <view class="font-14">活动简介：</view>
           <view class="font-14">
             <view class="font-bold">{{ item.description }}</view>
-          </view>
-        </view>
-        <view class="flex-between m-t-10">
-          <view class="font-14">照片：</view>
-          <view class="font-14">
-            <view class="font-bold">{{ item.images }}</view>
           </view>
         </view>
       </view>
@@ -80,20 +85,24 @@ export default {
       type: null,
       list: [
         {
-          house: "xxx房屋", //房屋
-          serviceType: "BX", // BX:报修，TX:投诉，ZX:咨询
-          contactPerson: "张三", // 联系人
-          contactPhone: "15129999999", // 联系电话
-          description: "楼道灯不亮", //描述
-          images: [], //照片
+          title: "跑步", //房屋
+          location: "篮球场", //房屋
+          createdPerson: "张三", // BX:报修，TX:投诉，ZX:咨询
+          createdTime: "2023-04-05 12:12", // 联系人
+          startTime: "2023-04-06 12:12", // 联系电话
+          endTime: "2023-04-08 12:12", //描述
+          description: '体育训练中心，晚上跑步一小时', //照片
+          images: []
         },
         {
-          house: "xxx房屋", //房屋
-          serviceType: "BX", // BX:报修，TX:投诉，ZX:咨询
-          contactPerson: "张三", // 联系人
-          contactPhone: "15129999999", // 联系电话
-          description: "楼道灯不亮", //描述
-          images: [], //照片
+          title: "羽毛球", //房屋
+          location: "篮球场", //房屋
+          createdPerson: "张三", // BX:报修，TX:投诉，ZX:咨询
+          createdTime: "2023-04-05 12:12", // 联系人
+          startTime: "2023-04-06 12:12", // 联系电话
+          endTime: "2023-04-08 12:12", //描述
+          description: 'xx俱乐部，晚上八点开始', //照片
+          images: []
         },
       ],
     };
@@ -126,14 +135,14 @@ export default {
       );
     },
     goPage(item) {
-      uni.setStorageSync("payNo", item.payNo);
+      uni.setStorageSync("activityDetails", item);
       uni.navigateTo({
-        url: `/pages/page/payDetails`,
+        url: `/pages/page/activityDetails`,
       });
     },
-    addFaultRepairReport() {
+    addActivity() {
       uni.navigateTo({
-        url: `/pages/page/addFaultRepairReport`,
+        url: `/pages/page/addActivity`,
       });
     },
     payType(type) {
