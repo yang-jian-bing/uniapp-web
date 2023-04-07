@@ -229,7 +229,7 @@
         "pagePath": "pages/tabBar/find/find",
         "iconPath": "static/tab-bar/all.png",
         "selectedIconPath": "static/tab-bar/all-hl.png",
-        "text": "活动"
+        "text": "发现"
       },
       {
         "pagePath": "pages/tabBar/personalCenter/personalCenter",

@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-03-26 11:52:09
+ * @LastEditTime: 2023-04-08 02:14:45
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
  * @FilePath: \app\pages\page\myHouse.vue
@@ -53,7 +53,6 @@
     <view class="pay-list-box p-10 p-t-0" v-if="list.length > 0">
       <view
         class="pay-list-item"
-        @click="goPage(item)"
         v-for="(item, index) in list"
         :key="index"
       >
@@ -76,9 +75,9 @@
           </view>
         </view>
         <view class="flex-between m-t-10">
-          <view class="font-14">城市：</view>
+          <view class="font-14">面积：</view>
           <view class="font-14">
-            <view class="font-bold">{{ item.city }}</view>
+            <view class="font-bold">{{ item.area }}平方米</view>
           </view>
         </view>
       </view>
@@ -93,7 +92,6 @@ export default {
   components: {},
   data() {
     return {
-      currentHouse: uni.getStorageSync("currentHouse"),
       type: null,
       list: [],
     };
@@ -106,24 +104,22 @@ export default {
       uni.navigateBack();
     },
     getList() {
-      const p = {
-        checkSum: "starlab",
-        // houseId: this.currentHouse.houseId,
-        type: this.type,
-      };
-      this.$request.get("/rest/user/houses", p).then(
-        (res) => {
-          this.list = res.data.houses.map((item) => {
-            item.time = dayjs(item.time).format("YYYY-MM-DD HH:ss:mm");
-            item.beginTime = dayjs(item.beginTime).format("YYYY-MM-DD");
-            item.endTime = dayjs(item.endTime).format("YYYY-MM-DD");
-            return item;
-          });
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+      this.$request
+        .get("/rest/house/my-house?checkSum=starlab", {
+          checkSum: "starlab",
+          phone: uni.getStorageSync("phoneNum"),
+        })
+        .then(
+          (res) => {
+            this.list = res.data.data.map((item) => {
+              item.address = `${item.communityName}${item.building}号楼${item.unit}单元${item.floor}${item.roomNo}`;
+              return item;
+            });
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
     },
     goPage(item) {
       uni.setStorageSync("payNo", item.payNo);
