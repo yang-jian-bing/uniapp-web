@@ -109,8 +109,8 @@ export default {
       columns: [],
       currentHouse: {},
       index: 1,
-      moduleList1: [],
-      moduleList: [
+      moduleList: [],
+      moduleList1: [
         {
           name: "客服",
           id: "",

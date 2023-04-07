@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:35:24
- * @LastEditTime: 2023-04-05 15:15:26
+ * @LastEditTime: 2023-04-07 08:53:47
  * @LastEditors: YangJianBing
  * @Description: 待缴费详情
  * @FilePath: \app\pages\page\addActivity.vue
@@ -26,10 +26,10 @@
           <uni-easyinput v-model="obj.location" placeholder="请输入" />
         </uni-forms-item>
         <uni-forms-item label="开始时间" required name="startTime">
-          <uni-easyinput v-model="obj.startTime" placeholder="请输入" />
+          <uni-datetime-picker type="datetime" return-type="timestamp" v-model="obj.startTime"/>
         </uni-forms-item>
         <uni-forms-item label="结束时间" required name="endTime">
-          <uni-easyinput v-model="obj.endTime" placeholder="请输入" />
+          <uni-datetime-picker type="datetime" return-type="timestamp" v-model="obj.endTime"/>
         </uni-forms-item>
         <uni-forms-item label="联系电话" required name="contactPhone">
           <uni-easyinput v-model="obj.contactPhone" placeholder="请输入" />
@@ -67,6 +67,7 @@ export default {
       duration: null, // 缴费时长
       obj: {
         images: [],
+        checkSum: "starlab",
       },
       rules: {
         title: {
@@ -121,7 +122,7 @@ export default {
             },
           ],
         },
-      }
+      },
     };
   },
   created() {},
@@ -135,14 +136,20 @@ export default {
         ...this.obj,
       };
       uni.showLoading({
-        title: "加载中",
+        title: "新增中",
       });
       this.$refs[ref]
         .validate()
         .then((res) => {
           console.log("success", res);
-          this.$request.post("/rest/pay/order", p).then(
-            (res) => {},
+          this.$request.post("/rest/activity/create-activity", p).then(
+            (res) => {
+              uni.showLoading({
+                title: "新增成功",
+              });
+              uni.hideLoading();
+              uni.navigateBack();
+            },
             (err) => {
               uni.hideLoading();
               console.log(err);

@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:35:24
- * @LastEditTime: 2023-04-05 15:35:03
+ * @LastEditTime: 2023-04-07 09:08:03
  * @LastEditors: YangJianBing
  * @Description: 待缴费详情
  * @FilePath: \app\pages\page\activityDetails.vue
@@ -124,13 +124,13 @@ export default {
     };
   },
   created() {
-    // this.getDetails();
+    this.getDetails();
   },
   methods: {
     getDetails() {
       this.$request
-        .get("/rest/pay/pay-details?checkSum=starlab", {
-          payNo: uni.getStorageSync("payNo"),
+        .get("/rest/activity/get-activity-details?checkSum=starlab", {
+          id: uni.getStorageSync("activityDetails")._id,
         })
         .then(
           (res) => {

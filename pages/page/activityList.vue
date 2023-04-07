@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-04-05 15:12:07
+ * @LastEditTime: 2023-04-07 09:02:37
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
  * @FilePath: \app\pages\page\activityList.vue
@@ -108,7 +108,7 @@ export default {
     };
   },
   created() {
-    // this.getList();
+    this.getList();
   },
   methods: {
     back() {
@@ -117,17 +117,11 @@ export default {
     getList() {
       const p = {
         checkSum: "starlab",
-        // houseId: this.currentHouse.houseId,
         type: this.type,
       };
-      this.$request.get("/rest/user/houses", p).then(
+      this.$request.get("/rest/activity/get-activity", p).then(
         (res) => {
-          this.list = res.data.houses.map((item) => {
-            item.time = dayjs(item.time).format("YYYY-MM-DD HH:ss:mm");
-            item.beginTime = dayjs(item.beginTime).format("YYYY-MM-DD");
-            item.endTime = dayjs(item.endTime).format("YYYY-MM-DD");
-            return item;
-          });
+          this.list = res.data.data;
         },
         (err) => {
           console.log(err);
