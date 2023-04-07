@@ -7,7 +7,7 @@
       <view class="infoBox">
         <!-- <view class="isName">{{ userObj.name }}</view> -->
         <view class="isZWinfo">
-          <view>{{ userObj.phone.split("+86")[1] }}</view>
+          <view>{{ userObj.phone }}</view>
         </view>
       </view>
     </view>

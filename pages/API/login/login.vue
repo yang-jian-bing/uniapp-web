@@ -82,12 +82,16 @@ export default {
         verifCode: this.captchaVerification,
         checkSum: "starlab",
       };
-
+      uni.showLoading({
+        title: "加载中...",
+      });
       this.$request.post("/rest/user/login?checkSum=starlab", params).then(
         (res) => {
           Object.keys(res.data).map((key) => {
             uni.setStorageSync(key, res.data[key]);
           });
+          uni.setStorageSync('phoneNum', res.data.phoneNum.split("+86")[1]);
+          uni.hideLoading();
           uni.showToast({
             title: "登录成功",
             icon: "success",
@@ -98,6 +102,7 @@ export default {
           });
         },
         (err) => {
+          uni.hideLoading();
           Toast.clear();
           console.log(err);
         }
@@ -117,19 +122,22 @@ export default {
       } else {
         this.phoneError = false;
       }
-
+      uni.showLoading({
+        title: "加载中...",
+      });
       const condition = {
         phoneNum: this.principal,
         checkSum: "starlab",
       };
 
-      var sha1 = crypto.createHash("sha1");
+      const sha1 = crypto.createHash("sha1");
       sha1.update(this.captchaVerification.split("").reverse().join(""));
       const code_sha = sha1.digest("hex").substring(10, 20);
       condition.sign = code_sha;
       this.$request
         .get("/rest/user/verif-code", condition)
         .then(() => {
+          uni.hideLoading();
           uni.showToast({
             title: "发送成功",
             icon: "success",
@@ -149,7 +157,7 @@ export default {
         })
         .catch((err) => {
           console.log(err);
-
+          uni.hideLoading();
           Toast(err);
           return;
         });

@@ -47,7 +47,7 @@
           </view>
           <view class="min-title">我的房屋</view>
         </view>
-        <view class="min-icon"  @click="phone">
+        <view class="min-icon" @click="phone">
           <view class="text-center">
             <image
               src="../../../assets/img/home-icon/kf.png"
@@ -331,16 +331,24 @@ export default {
   },
   methods: {
     getHouses() {
-      this.$request.get("/rest/user/houses?checkSum=starlab").then(
-        (res) => {
-          this.columns = res.data.houses;
-          this.currentHouse = this.columns[0];
-          uni.setStorageSync("currentHouse", this.columns[0]);
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+      this.$request
+        .get("/rest/house/my-house?checkSum=starlab", {
+          checkSum: "starlab",
+          phone: uni.getStorageSync("phoneNum"),
+        })
+        .then(
+          (res) => {
+            this.columns = res.data.data.map(item=>{
+              item.address = `${item.communityName}${item.building}号楼${item.unit}单元${item.floor}${item.roomNo}`
+              return item
+            });
+            this.currentHouse = this.columns[0];
+            uni.setStorageSync("currentHouse", this.columns[0]);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
     },
     phone() {
       plus.device.dial("18211129003", true);
