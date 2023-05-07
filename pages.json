@@ -110,7 +110,24 @@
         }
       }
     },
-   
+    {
+      "path": "pages/page/faultRepairReportDetails",
+      "style": {
+        "navigationBarTitleText": "故障报修详情",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/page/faultRepairReportHandle",
+      "style": {
+        "navigationBarTitleText": "故障报修处理",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
     {
       "path": "pages/page/addFaultRepairReport",
       "style": {

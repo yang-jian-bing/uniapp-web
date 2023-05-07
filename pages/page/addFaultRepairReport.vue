@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:35:24
- * @LastEditTime: 2023-04-05 13:30:59
+ * @LastEditTime: 2023-05-07 22:05:13
  * @LastEditors: YangJianBing
  * @Description: 待缴费详情
  * @FilePath: \app\pages\page\addFaultRepairReport.vue
@@ -49,7 +49,11 @@
           />
         </uni-forms-item>
         <uni-forms-item label="照片">
-          <uni-file-picker limit="9" v-model="obj.images" title="最多选择9张图片"></uni-file-picker>
+          <uni-file-picker
+            limit="9"
+            v-model="obj.images"
+            title="最多选择9张图片"
+          ></uni-file-picker>
         </uni-forms-item>
       </uni-forms>
     </view>
@@ -70,7 +74,8 @@ export default {
       duration: null, // 缴费时长
       obj: {
         ...uni.getStorageSync("currentHouse"),
-        images: []
+        images: [],
+        checkSum: "starlab"
       },
       rules: {
         address: {
@@ -143,36 +148,48 @@ export default {
     },
     houseChange(value) {
       this.obj = Object.assign(this.obj, this.columns[value.detail.value]);
-      debugger;
       setTimeout(() => {
         this.$set(this.obj, "address", this.obj.address);
-      }, 2000);
-      console.log(this.obj);
+      }, 100);
     },
     getHouses() {
-      this.$request.get("/rest/user/houses?checkSum=starlab").then(
-        (res) => {
-          this.columns = res.data.houses;
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+      this.$request
+        .get("/rest/house/my-house?checkSum=starlab", {
+          checkSum: "starlab",
+          phone: uni.getStorageSync("phoneNum"),
+        })
+        .then(
+          (res) => {
+            this.columns = res.data.data.map((item) => {
+              item.address = `${item.communityName}${item.building}号楼${item.unit}单元${item.floor}${item.roomNo}`;
+              return item;
+            });
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
     },
 
     submitData(ref) {
       const p = {
         ...this.obj,
       };
+      delete p._id
       uni.showLoading({
         title: "加载中",
       });
       this.$refs[ref]
         .validate()
         .then((res) => {
-          console.log("success", res);
-          this.$request.post("/rest/pay/order", p).then(
-            (res) => {},
+          this.$request.post("/rest/report-repairs/create-report-repairs", p).then(
+            (res) => {
+              uni.showLoading({
+                title: "提交成功",
+              });
+              uni.hideLoading();
+              uni.navigateBack();
+            },
             (err) => {
               uni.hideLoading();
               console.log(err);
