@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-04-07 09:02:37
+ * @LastEditTime: 2023-05-08 23:41:54
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
  * @FilePath: \app\pages\page\activityList.vue
@@ -19,6 +19,15 @@
       @clickRight="addActivity"
       left-icon="left"
     ></uni-nav-bar>
+    <view class="m-t-5">
+      <uni-segmented-control
+        :current="current"
+        :values="items"
+        styleType="text"
+        @clickItem="onClickItem"
+        activeColor="#dd2c34"
+      ></uni-segmented-control>
+    </view>
     <view class="pay-list-box p-10" v-if="list.length > 0">
       <view
         class="pay-list-item"
@@ -38,11 +47,11 @@
             <view class="font-bold">{{ item.location }}</view>
           </view>
         </view>
-        
+
         <view class="flex-between m-t-10">
-          <view class="font-14">发起人：</view>
+          <view class="font-14">联系方式：</view>
           <view class="font-14">
-            <view class="font-bold">{{ item.createdPerson }}</view>
+            <view class="font-bold">{{ item.contactPhone }}</view>
           </view>
         </view>
         <view class="flex-between m-t-10">
@@ -82,46 +91,39 @@ export default {
   data() {
     return {
       currentHouse: uni.getStorageSync("currentHouse"),
-      type: null,
-      list: [
-        {
-          title: "跑步", //房屋
-          location: "篮球场", //房屋
-          createdPerson: "张三", // BX:报修，TX:投诉，ZX:咨询
-          createdTime: "2023-04-05 12:12", // 联系人
-          startTime: "2023-04-06 12:12", // 联系电话
-          endTime: "2023-04-08 12:12", //描述
-          description: '体育训练中心，晚上跑步一小时', //照片
-          images: []
-        },
-        {
-          title: "羽毛球", //房屋
-          location: "篮球场", //房屋
-          createdPerson: "张三", // BX:报修，TX:投诉，ZX:咨询
-          createdTime: "2023-04-05 12:12", // 联系人
-          startTime: "2023-04-06 12:12", // 联系电话
-          endTime: "2023-04-08 12:12", //描述
-          description: 'xx俱乐部，晚上八点开始', //照片
-          images: []
-        },
-      ],
+      type: 0,
+      current: 0,
+      list: [],
+      items: ["全部", "我参与的", "我发起的"],
     };
   },
-  created() {
+  onShow() {
     this.getList();
   },
   methods: {
     back() {
       uni.navigateBack();
     },
+    onClickItem(value) {
+      this.type = value.currentIndex;
+      this.getList();
+    },
     getList() {
       const p = {
         checkSum: "starlab",
+        userId: uni.getStorageSync("userId"),
         type: this.type,
       };
       this.$request.get("/rest/activity/get-activity", p).then(
         (res) => {
-          this.list = res.data.data;
+          this.list = res.data.data.map((item) => {
+            item.createdTime = dayjs(item.createdTime).format(
+              "YYYY-MM-DD HH:mm"
+            );
+            item.startTime = dayjs(item.startTime).format("YYYY-MM-DD HH:mm");
+            item.endTime = dayjs(item.endTime).format("YYYY-MM-DD HH:mm");
+            return item;
+          });
         },
         (err) => {
           console.log(err);
@@ -129,7 +131,7 @@ export default {
       );
     },
     goPage(item) {
-      uni.setStorageSync("activityDetails", item);
+      uni.setStorageSync("activeId", item.activeId);
       uni.navigateTo({
         url: `/pages/page/activityDetails`,
       });

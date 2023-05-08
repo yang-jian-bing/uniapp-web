@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-05-07 22:14:36
+ * @LastEditTime: 2023-05-08 22:23:54
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
  * @FilePath: \app\pages\page\faultRepairReport.vue
@@ -85,7 +85,7 @@ export default {
       list: [],
     };
   },
-  created() {
+  onShow() {
     this.getList();
   },
   methods: {
