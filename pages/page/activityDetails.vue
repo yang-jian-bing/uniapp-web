@@ -1,10 +1,10 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:35:24
- * @LastEditTime: 2023-04-07 09:08:03
+ * @LastEditTime: 2023-05-20 09:51:23
  * @LastEditors: YangJianBing
  * @Description: 待缴费详情
- * @FilePath: \app\pages\page\activityDetails.vue
+ * @FilePath: /uniapp-web/pages/page/activityDetails.vue
 -->
 <template>
   <view class="page">
@@ -33,9 +33,9 @@
           </view>
         </view>
         <view class="flex-between m-t-20">
-          <view class="font-14">发起人</view>
+          <view class="font-14">联系方式</view>
           <view class="font-14">
-            <view class="font-bold">{{ obj.createdPerson }}</view>
+            <view class="font-bold">{{ obj.contactPhone }}</view>
           </view>
         </view>
         <view class="flex-between m-t-20">
@@ -65,7 +65,16 @@
         <view class="flex-between m-t-20">
           <view class="font-14">照片</view>
           <view class="font-14">
-            <view class="font-bold">{{ obj.images }}</view>
+            <view class="font-bold">
+              <image
+                class="m-l-10"
+                style="width: 60px; height: 60px; background-color: #eeeeee"
+                v-for="img in obj.images"
+                @click="previewImg(img.url)"
+                :key="img.url"
+                :src="img.url"
+              ></image
+            ></view>
           </view>
         </view>
       </view>
@@ -78,10 +87,12 @@
         <view
           :key="item.name"
           class="flex-between m-b-20"
-          v-for="item in obj.participantLIst"
+          v-for="item in obj.participantList"
         >
-          <view class="font-14">姓名：{{ item.name }}</view>
-          <view class="font-14"> 加入时间：{{ item.time }} </view>
+          <view class="font-14">姓名：{{ item.contactPhone }}</view>
+          <view class="font-14">
+            加入时间：{{ formatTime(item.participateTime) }}
+          </view>
         </view>
       </view>
     </view>
@@ -102,7 +113,15 @@ export default {
   data() {
     return {
       obj: {
-       
+        title: "", //房屋
+        location: "",
+        createdPerson: "", // BX:报修，TX:投诉，ZX:咨询
+        createdTime: "", // 联系人
+        startTime: "", // 联系电话
+        endTime: "", //描述
+        description: "", //照片
+        images: [],
+        participantList: [],
       },
     };
   },
@@ -110,16 +129,27 @@ export default {
     this.getDetails();
   },
   methods: {
-	  
+    formatTime(time) {
+      return dayjs(time).format("YYYY-MM-DD HH:mm");
+    },
+    previewImg(url) {
+      uni.previewImage({
+        current: 0,
+        urls: [url],
+      });
+    },
     getDetails() {
       this.$request
-        .get("/rest/activity/get-activity-details?checkSum=starlab", {
-          id: uni.getStorageSync("activityDetails")._id,
+        .get("/rest/activity/get-activity-details", {
+          activeId: uni.getStorageSync("activeId"),
         })
         .then(
           (res) => {
             const data = res.data.data;
-            data.createdTime = dayjs(data.createdTime).format("YYYY-MM-DD HH:ss:mm");
+            data.createdTime = dayjs(data.createdTime).format(
+              "YYYY-MM-DD HH:ss"
+            );
+            data.startTime = dayjs(data.startTime).format("YYYY-MM-DD");
             data.endTime = dayjs(data.endTime).format("YYYY-MM-DD");
             data.startTime = dayjs(data.startTime).format("YYYY-MM-DD");
             this.obj = data;
@@ -129,12 +159,30 @@ export default {
           }
         );
     },
-	join(){
-		this.$refs.alertDialog.open()
-	},
-	confirmJoin(){
-		
-	},
+    submitData(ref) {
+      const p = {
+        activeId: uni.getStorageSync("activeId"),
+        phoneNum: uni.getStorageSync("phoneNum"),
+      };
+      uni.showLoading({
+        title: "处理中",
+      });
+      this.$request.post("/rest/activity/update-activity", p).then(
+        (res) => {
+          uni.showLoading({
+            title: "提交成功",
+          });
+          uni.hideLoading();
+          setTimeout(() => {
+            uni.navigateBack();
+          }, 1000);
+        },
+        (err) => {
+          uni.hideLoading();
+          console.log(err);
+        }
+      );
+    },
     back() {
       uni.navigateBack();
     },

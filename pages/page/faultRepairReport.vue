@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-04-05 11:56:36
+ * @LastEditTime: 2023-05-08 22:23:54
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
  * @FilePath: \app\pages\page\faultRepairReport.vue
@@ -29,15 +29,25 @@
         <view class="flex-between m-t-10">
           <view class="font-14">房屋：</view>
           <view class="font-14">
-            <view class="font-bold">{{ item.house }}</view>
+            <view class="font-bold">{{ item.address }}</view>
+          </view>
+        </view>
+        <view class="flex-between m-t-10">
+          <view class="font-14">创建时间：</view>
+          <view class="font-14">
+            <view class="font-bold">{{ item.createdTime }}</view>
           </view>
         </view>
         <view class="flex-between m-t-10">
           <view class="font-14">类型：</view>
           <view class="font-14">
             <view class="font-bold" v-if="item.serviceType === 'BX'">报修</view>
-            <view class="font-bold" v-else-if="item.serviceType === 'TS'">投诉</view>
-            <view class="font-bold" v-else-if="item.serviceType === 'ZX'">咨询</view>
+            <view class="font-bold" v-else-if="item.serviceType === 'TS'"
+              >投诉</view
+            >
+            <view class="font-bold" v-else-if="item.serviceType === 'ZX'"
+              >咨询</view
+            >
           </view>
         </view>
         <view class="flex-between m-t-10">
@@ -58,12 +68,6 @@
             <view class="font-bold">{{ item.description }}</view>
           </view>
         </view>
-        <view class="flex-between m-t-10">
-          <view class="font-14">照片：</view>
-          <view class="font-14">
-            <view class="font-bold">{{ item.images }}</view>
-          </view>
-        </view>
       </view>
     </view>
     <view v-else class="text-center p-20"> 暂无数据 </view>
@@ -78,28 +82,11 @@ export default {
     return {
       currentHouse: uni.getStorageSync("currentHouse"),
       type: null,
-      list: [
-        {
-          house: "xxx房屋", //房屋
-          serviceType: "BX", // BX:报修，TX:投诉，ZX:咨询
-          contactPerson: "张三", // 联系人
-          contactPhone: "15129999999", // 联系电话
-          description: "楼道灯不亮", //描述
-          images: [], //照片
-        },
-        {
-          house: "xxx房屋", //房屋
-          serviceType: "BX", // BX:报修，TX:投诉，ZX:咨询
-          contactPerson: "张三", // 联系人
-          contactPhone: "15129999999", // 联系电话
-          description: "楼道灯不亮", //描述
-          images: [], //照片
-        },
-      ],
+      list: [],
     };
   },
-  created() {
-    // this.getList();
+  onShow() {
+    this.getList();
   },
   methods: {
     back() {
@@ -107,16 +94,13 @@ export default {
     },
     getList() {
       const p = {
-        checkSum: "starlab",
-        // houseId: this.currentHouse.houseId,
+        userId: uni.getStorageSync("userId"),
         type: this.type,
       };
-      this.$request.get("/rest/user/houses", p).then(
+      this.$request.get("/rest/report-repairs/get-report-repairs-list", p).then(
         (res) => {
-          this.list = res.data.houses.map((item) => {
-            item.time = dayjs(item.time).format("YYYY-MM-DD HH:ss:mm");
-            item.beginTime = dayjs(item.beginTime).format("YYYY-MM-DD");
-            item.endTime = dayjs(item.endTime).format("YYYY-MM-DD");
+          this.list = res.data.data.map((item) => {
+            item.createdTime = dayjs(item.createdTime).format("YYYY-MM-DD HH:mm");
             return item;
           });
         },
@@ -126,9 +110,9 @@ export default {
       );
     },
     goPage(item) {
-      uni.setStorageSync("payNo", item.payNo);
+      uni.setStorageSync("reportRepairsId", item.reportRepairsId);
       uni.navigateTo({
-        url: `/pages/page/payDetails`,
+        url: `/pages/page/faultRepairReportDetails`,
       });
     },
     addFaultRepairReport() {

@@ -13,11 +13,11 @@ const request = (options = {}) => {
     uni.request({
       url: baseUrl + options.url || '',
       method: options.type || 'GET',
-      data:  {
-		  ...options.data,
-		  userId: uni.getStorageSync('userId'),
-		  userName: uni.getStorageSync('name')
-	  },
+      data: {
+        ...options.data,
+        checkSum: "starlab",
+        userId: uni.getStorageSync("userId")
+      },
       header: options.header || {}
     }).then(data => {
       let [err, res] = data;
