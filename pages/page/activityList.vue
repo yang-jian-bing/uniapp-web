@@ -84,26 +84,7 @@ export default {
       currentHouse: uni.getStorageSync("currentHouse"),
       type: null,
       list: [
-        {
-          title: "跑步", //房屋
-          location: "篮球场", //房屋
-          createdPerson: "张三", // BX:报修，TX:投诉，ZX:咨询
-          createdTime: "2023-04-05 12:12", // 联系人
-          startTime: "2023-04-06 12:12", // 联系电话
-          endTime: "2023-04-08 12:12", //描述
-          description: '体育训练中心，晚上跑步一小时', //照片
-          images: []
-        },
-        {
-          title: "羽毛球", //房屋
-          location: "篮球场", //房屋
-          createdPerson: "张三", // BX:报修，TX:投诉，ZX:咨询
-          createdTime: "2023-04-05 12:12", // 联系人
-          startTime: "2023-04-06 12:12", // 联系电话
-          endTime: "2023-04-08 12:12", //描述
-          description: 'xx俱乐部，晚上八点开始', //照片
-          images: []
-        },
+        
       ],
     };
   },
@@ -121,7 +102,12 @@ export default {
       };
       this.$request.get("/rest/activity/get-activity", p).then(
         (res) => {
-          this.list = res.data.data;
+          this.list = res.data.data.map(item=>{
+			  item.createdTime = dayjs(item.createdTime).format('YYYY-MM-DD HH:mm')
+			  item.endTime = dayjs(item.endTime).format('YYYY-MM-DD HH:mm')
+			  item.startTime = dayjs(item.startTime).format('YYYY-MM-DD HH:mm')
+			  return item
+		  });
         },
         (err) => {
           console.log(err);

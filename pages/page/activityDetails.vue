@@ -86,8 +86,12 @@
       </view>
     </view>
     <view class="m-t-20 m-b-20 m-10 text-center">
-      <button type="warn" @click="submitData('baseForm')">我要加入</button>
+      <button type="warn" @click="join()">我要加入</button>
     </view>
+	<uni-popup ref="alertDialog" type="dialog">
+					<uni-popup-dialog type="warn" cancelText="取消" confirmText="确定" title="提示" content="你确定要加入" @confirm="confirmJoin"
+						></uni-popup-dialog>
+				</uni-popup>
   </view>
 </template>
 
@@ -98,28 +102,7 @@ export default {
   data() {
     return {
       obj: {
-        title: "羽毛球", //房屋
-        location: "篮球场",
-        createdPerson: "张三", // BX:报修，TX:投诉，ZX:咨询
-        createdTime: "2023-04-05 12:12", // 联系人
-        startTime: "2023-04-06 12:12", // 联系电话
-        endTime: "2023-04-08 12:12", //描述
-        description: "xx俱乐部，晚上八点开始", //照片
-        images: [],
-        participantLIst: [
-          {
-            name: "张三",
-            time: "2023-04-03",
-          },
-          {
-            name: "李四",
-            time: "2023-04-03",
-          },
-          {
-            name: "王五",
-            time: "2023-04-03",
-          },
-        ],
+       
       },
     };
   },
@@ -127,6 +110,7 @@ export default {
     this.getDetails();
   },
   methods: {
+	  
     getDetails() {
       this.$request
         .get("/rest/activity/get-activity-details?checkSum=starlab", {
@@ -135,9 +119,9 @@ export default {
         .then(
           (res) => {
             const data = res.data.data;
-            data.time = dayjs(data.time).format("YYYY-MM-DD HH:ss:mm");
-            data.beginTime = dayjs(data.beginTime).format("YYYY-MM-DD");
+            data.createdTime = dayjs(data.createdTime).format("YYYY-MM-DD HH:ss:mm");
             data.endTime = dayjs(data.endTime).format("YYYY-MM-DD");
+            data.startTime = dayjs(data.startTime).format("YYYY-MM-DD");
             this.obj = data;
           },
           (err) => {
@@ -145,6 +129,12 @@ export default {
           }
         );
     },
+	join(){
+		this.$refs.alertDialog.open()
+	},
+	confirmJoin(){
+		
+	},
     back() {
       uni.navigateBack();
     },
