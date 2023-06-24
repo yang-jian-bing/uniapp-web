@@ -1,11 +1,3 @@
-<!--
- * @Author: YangJianBing
- * @Date: 2021-10-23 11:35:24
- * @LastEditTime: 2023-05-07 22:05:13
- * @LastEditors: YangJianBing
- * @Description: 待缴费详情
- * @FilePath: \app\pages\page\addFaultRepairReport.vue
--->
 <template>
   <view class="page">
     <uni-nav-bar

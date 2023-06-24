@@ -1,11 +1,3 @@
-<!--
- * @Author: YangJianBing
- * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-05-20 09:51:33
- * @LastEditors: YangJianBing
- * @Description: 待缴费列表
- * @FilePath: /uniapp-web/pages/page/activityList.vue
--->
 <template>
   <view class="page">
     <uni-nav-bar

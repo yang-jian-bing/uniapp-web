@@ -1,11 +1,3 @@
-<!--
- * @Author: YangJianBing
- * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-03-05 23:11:23
- * @LastEditors: YangJianBing
- * @Description: 待缴费列表
- * @FilePath: \app\pages\page\billToBePaidList.vue
--->
 <template>
   <view class="page">
     <uni-nav-bar

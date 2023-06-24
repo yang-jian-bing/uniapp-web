@@ -1,19 +1,4 @@
-<!--
- * @Author: YangJianBing
- * @Date: 2023-05-07 22:05:59
- * @LastEditTime: 2023-05-07 23:38:10
- * @LastEditors: YangJianBing
- * @Description: 
- * @FilePath: \app\pages\page\faultRepairReportDetails.vue
--->
-<!--
- * @Author: YangJianBing
- * @Date: 2021-10-23 11:35:24
- * @LastEditTime: 2023-04-07 09:08:03
- * @LastEditors: YangJianBing
- * @Description: 待缴费详情
- * @FilePath: \app\pages\page\activityDetails.vue
--->
+
 <template>
   <view class="page">
     <uni-nav-bar
