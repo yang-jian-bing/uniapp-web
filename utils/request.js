@@ -1,7 +1,7 @@
 // request.js
 // 通常可以吧 baseUrl 单独放在一个 js 文件了
-// const baseUrl = 'http://127.0.0.1:7001'
-const baseUrl = 'https://www.shuainiba.com'
+const baseUrl = 'http://127.0.0.1:7001'
+// const baseUrl = 'https://www.shuainiba.com'
 
 const request = (options = {}) => {
   // 在这里可以对请求头进行一些设置
@@ -21,7 +21,7 @@ const request = (options = {}) => {
       header: options.header || {}
     }).then(data => {
       let [err, res] = data;
-      if (res.data.code === 0) {
+      if (res.data.errCode === 0) {
         resolve(res);
       } else {
         uni.showToast({
