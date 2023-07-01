@@ -1,10 +1,10 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:35:24
- * @LastEditTime: 2023-03-05 20:56:46
+ * @LastEditTime: 2023-07-01 10:48:54
  * @LastEditors: YangJianBing
  * @Description: 待缴费详情
- * @FilePath: \app\pages\page\payDetails.vue
+ * @FilePath: /uniapp-web/pages/page/payDetails.vue
 -->
 <template>
   <view class="page">
@@ -85,7 +85,7 @@ export default {
   methods: {
     getDetails() {
       this.$request
-        .get("/rest/pay/pay-details?checkSum=starlab", {
+        .get("/rest/pay/details?checkSum=starlab", {
           payNo: uni.getStorageSync("payNo"),
         })
         .then(

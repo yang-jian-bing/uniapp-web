@@ -87,7 +87,7 @@
           </view>
         </view>
       </view>
-      <view class="text-center">
+      <view class="text-center" v-if="obj.participantList.length === 0">
         暂无参与人
       </view>
     </view>

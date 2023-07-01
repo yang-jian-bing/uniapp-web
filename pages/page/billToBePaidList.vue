@@ -37,7 +37,7 @@
       >
       <view
         class="pay-type"
-        :class="[type === 'CWGLF' ? 'pay-electricity' : '']"
+        :class="[type === 'QT' ? 'pay-electricity' : '']"
         @click="payType('QT')"
         >其它</view
       >
@@ -98,7 +98,7 @@ export default {
   data() {
     return {
       currentHouse: uni.getStorageSync("currentHouse"),
-      type: null,
+      type: '',
       list: [],
     };
   },
@@ -115,7 +115,7 @@ export default {
         // houseId: this.currentHouse.houseId,
         type: this.type,
       };
-      this.$request.get("/rest/pay/pay-list", p).then(
+      this.$request.get("/rest/pay/list", p).then(
         (res) => {
           this.list = res.data.data.map(item=>{
             item.time = dayjs(item.time).format('YYYY-MM-DD HH:ss:mm')
@@ -175,7 +175,8 @@ export default {
   background: #67c23a;
 }
 .pay-electricity {
-  background: #f56c6c;
+  background: #e64340;
+  color: #fff;
 }
 .pay-property {
   background: #409eff;

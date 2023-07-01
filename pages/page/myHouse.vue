@@ -105,7 +105,7 @@ export default {
     },
     getList() {
       this.$request
-        .get("/rest/house/my-house?checkSum=starlab", {
+        .get("/rest/user/my-house?checkSum=starlab", {
           checkSum: "starlab",
           phone: uni.getStorageSync("phoneNum"),
         })
