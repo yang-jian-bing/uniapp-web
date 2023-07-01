@@ -1,10 +1,10 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-05-08 22:23:54
+ * @LastEditTime: 2023-06-24 14:51:49
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
- * @FilePath: \app\pages\page\faultRepairReport.vue
+ * @FilePath: /uniapp-web/pages/page/faultRepairReport.vue
 -->
 <template>
   <view class="page">
@@ -19,6 +19,15 @@
       @clickRight="addFaultRepairReport"
       left-icon="left"
     ></uni-nav-bar>
+    <view class="m-t-5">
+      <uni-segmented-control
+        :current="current"
+        :values="items"
+        styleType="text"
+        @clickItem="onClickItem"
+        activeColor="#dd2c34"
+      ></uni-segmented-control>
+    </view>
     <view class="pay-list-box p-10" v-if="list.length > 0">
       <view
         class="pay-list-item"
@@ -83,6 +92,8 @@ export default {
       currentHouse: uni.getStorageSync("currentHouse"),
       type: null,
       list: [],
+      current: 0,
+      items: ["全部", "进行中", "已完成"],
     };
   },
   onShow() {
@@ -91,6 +102,10 @@ export default {
   methods: {
     back() {
       uni.navigateBack();
+    },
+    onClickItem(value) {
+      this.type = value.currentIndex;
+      this.getList();
     },
     getList() {
       const p = {

@@ -87,6 +87,9 @@
           </view>
         </view>
       </view>
+      <view class="text-center">
+        暂无参与人
+      </view>
     </view>
     <view class="m-t-20 m-b-20 m-10 text-center">
       <button type="warn" @click="join()">我要加入</button>
