@@ -92,12 +92,18 @@
       </view>
     </view>
     <view class="m-t-20 m-b-20 m-10 text-center">
-      <button type="warn" @click="join()">我要加入</button>
+      <button type="warn" @click="submitData()">我要加入</button>
     </view>
-	<uni-popup ref="alertDialog" type="dialog">
-					<uni-popup-dialog type="warn" cancelText="取消" confirmText="确定" title="提示" content="你确定要加入" @confirm="confirmJoin"
-						></uni-popup-dialog>
-				</uni-popup>
+    <uni-popup ref="alertDialog" type="dialog">
+      <uni-popup-dialog
+        type="warn"
+        cancelText="取消"
+        confirmText="确定"
+        title="提示"
+        content="你确定要加入"
+        @confirm="confirmJoin"
+      ></uni-popup-dialog>
+    </uni-popup>
   </view>
 </template>
 
@@ -154,7 +160,7 @@ export default {
           }
         );
     },
-    submitData(ref) {
+    confirmJoin() {
       const p = {
         activeId: uni.getStorageSync("activeId"),
         phoneNum: uni.getStorageSync("phoneNum"),
