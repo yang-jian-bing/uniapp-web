@@ -25,10 +25,10 @@ const request = (options = {}) => {
         resolve(res);
       } else {
         uni.showToast({
-          title: res.data.message,
+          title: res.data.errMsg,
           icon: "error",
         });
-        reject(res.data.message)
+        reject(res.data.errMsg)
       }
     }).catch(error => {
       reject(error)
