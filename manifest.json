@@ -2,8 +2,8 @@
     "name" : "橄榄海",
     "appid" : "__UNI__D95787D",
     "description" : "应用描述",
-    "versionName" : "1.0.25",
-    "versionCode" : 25,
+    "versionName" : "1.0.32",
+    "versionCode" : 32,
     "transformPx" : false,
     "app-plus" : {
         "usingComponents" : true,
@@ -25,6 +25,9 @@
             "VideoPlayer" : {},
             "OAuth" : {},
             "Webview-x5" : {}
+        },
+        "compatible" : {
+            "ignoreVersion" : true //true表示忽略版本检查提示框，HBuilderX1.9.0及以上版本支持  
         },
         "distribute" : {
             "android" : {
