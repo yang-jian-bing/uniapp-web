@@ -197,7 +197,7 @@ export default {
 }
 .logo-box {
   text-align: center;
-  padding-top: 100px;
+  padding-top: 50px;
 }
 .min-logo {
   width: 88px;
@@ -208,9 +208,7 @@ export default {
   text-align: center;
   height: 25px;
   font-size: 18px;
-  margin-top: 10px;
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: bold;
+  margin-top: 0px;
   color: #333333;
   line-height: 25px;
 }
