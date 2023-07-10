@@ -1,5 +1,12 @@
 <template>
   <view class="login-register">
+    <image
+          src="../../../assets/img/login/top.png"
+          class="min-logo"
+          alt=""
+          srcset=""
+          style="width: 100%;border-radius:0;"
+        />
     <view class="con">
       <view class="logo-box">
         <image
@@ -16,7 +23,7 @@
           <input
             v-model="principal"
             type="text"
-            class="text"
+            class="text "
             placeholder="请输入手机号"
           />
         </view>
@@ -185,14 +192,17 @@ export default {
 </script>
 
 <style>
+.login-b-b{
+  border-bottom: solid 3px #fff;
+}
 .logo-box {
   text-align: center;
   padding-top: 100px;
 }
 .min-logo {
-  width: 68px;
-  height: 68px;
-  border-radius: 10px;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
 }
 .loginTitle {
   text-align: center;
@@ -251,7 +261,7 @@ export default {
 }
 
 .login-register .tab .item.active::after {
-  background: linear-gradient(to right, #fc1b35, #fff);
+  background: linear-gradient(to right, #c91915, #fff);
 }
 
 .login-register .con {
@@ -261,7 +271,7 @@ export default {
 .login-register .con .item {
   margin-top: 30rpx;
   padding: 30rpx 0;
-  border-bottom: 2rpx solid #fafafa;
+  border-bottom: 4rpx solid #fff;
   display: flex;
   align-items: center;
 }
@@ -275,12 +285,12 @@ export default {
 .login-register .con .item .get-captcha {
   font-size: 28rpx;
   padding: 0 20rpx;
-  color: #fc1b35;
+  color: #c91915;
 }
 
 .login-register .con .btn {
   color: #fff;
-  background: #fc1b35;
+  background: #c91915;
   height: 90rpx;
   line-height: 90rpx;
   margin-top: 70rpx;
@@ -350,7 +360,7 @@ export default {
   height: 100rpx;
   margin: auto;
   border-radius: 50%;
-  background: #fc1b35;
+  background: #c91915;
 }
 
 .login-register .register-success .img::after {
@@ -380,7 +390,7 @@ export default {
 /* 错误 */
 .login-register .error {
   font-size: 12px;
-  color: #fc1b35;
+  color: #c91915;
   line-height: 1.5em;
 }
 .login-register .error .error-icon {
@@ -390,7 +400,7 @@ export default {
   line-height: 14px;
   font-size: 12px;
   border-radius: 50%;
-  background: #fc1b35;
+  background: #c91915;
   color: #fff;
   text-align: center;
   margin-right: 5px;
