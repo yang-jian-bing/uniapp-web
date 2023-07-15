@@ -86,7 +86,7 @@ export default {
 
       const params = {
         phoneNum: this.principal,
-        verifCode: this.captchaVerification,
+        verifyCode: this.captchaVerification,
         checkSum: "starlab",
       };
       uni.showLoading({
@@ -197,7 +197,7 @@ export default {
 }
 .logo-box {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 30px;
 }
 .min-logo {
   width: 88px;

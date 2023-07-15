@@ -156,6 +156,9 @@ export default {
               item.address = `${item.communityName}${item.building}号楼${item.unit}单元${item.floor}${item.roomNo}`;
               return item;
             });
+            if(this.columns.length>0){
+              this.obj = this.columns[0]
+            }
           },
           (err) => {
             console.log(err);
@@ -174,7 +177,7 @@ export default {
       this.$refs[ref]
         .validate()
         .then((res) => {
-          this.$request.post("/rest/report-repairs/create-report-repairs", p).then(
+          this.$request.post("/rest/report-repair/create", p).then(
             (res) => {
               uni.showLoading({
                 title: "提交成功",

@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-07-01 10:46:48
+ * @LastEditTime: 2023-07-15 14:10:11
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
  * @FilePath: /uniapp-web/pages/page/faultRepairReport.vue
@@ -110,9 +110,9 @@ export default {
     getList() {
       const p = {
         userId: uni.getStorageSync("userId"),
-        type: this.type,
+        status: this.type,
       };
-      this.$request.get("/rest/report-repairs/get-report-repairs-list", p).then(
+      this.$request.get("/rest/report-repair/list", p).then(
         (res) => {
           this.list = res.data.data.map((item) => {
             item.createdTime = dayjs(item.createdTime).format("YYYY-MM-DD HH:mm");

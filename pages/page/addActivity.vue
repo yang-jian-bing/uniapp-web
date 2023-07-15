@@ -11,7 +11,7 @@
       left-icon="left"
     ></uni-nav-bar>
     <view class="p-10 b-g-f m-10">
-      <uni-forms ref="baseForm" :rules="rules" :modelValue="obj">
+      <uni-forms ref="baseForm" label-width="80px" :rules="rules" :modelValue="obj">
         <uni-forms-item label="标题" required name="title">
           <uni-easyinput v-model="obj.title" placeholder="请输入" />
         </uni-forms-item>

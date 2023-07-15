@@ -149,7 +149,7 @@ export default {
     },
     getDetails() {
       this.$request
-        .get("/rest/report-repairs/get-report-repairs-details", {
+        .get("/rest/report-repair/detail", {
           checkSum: "starlab",
           reportRepairsId: uni.getStorageSync("reportRepairsId"),
         })

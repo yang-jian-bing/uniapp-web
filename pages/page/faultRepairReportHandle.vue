@@ -1,10 +1,10 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2023-05-07 22:24:47
- * @LastEditTime: 2023-05-07 23:08:06
+ * @LastEditTime: 2023-07-15 13:50:46
  * @LastEditors: YangJianBing
  * @Description: 
- * @FilePath: \app\pages\page\faultRepairReportHandle.vue
+ * @FilePath: /uniapp-web/pages/page/faultRepairReportHandle.vue
 -->
 <!--
  * @Author: YangJianBing
@@ -91,7 +91,7 @@ export default {
         .validate()
         .then((res) => {
           this.$request
-            .post("/rest/report-repairs/update-report-repairs", p)
+            .put("/rest/report-repair/update", p)
             .then(
               (res) => {
                 uni.showLoading({

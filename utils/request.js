@@ -1,7 +1,7 @@
 // request.js
 // 通常可以吧 baseUrl 单独放在一个 js 文件了
-// const baseUrl = 'http://127.0.0.1:7001'
-const baseUrl = 'https://www.shuainiba.com'
+const baseUrl = 'http://127.0.0.1:7002'
+// const baseUrl = 'https://www.shuainiba.com'
 
 const request = (options = {}) => {
   // 在这里可以对请求头进行一些设置
@@ -51,9 +51,17 @@ const post = (url, data, options = {}) => {
   return request(options)
 }
 
+const put = (url, data, options = {}) => {
+  options.type = 'PUT';
+  options.data = data;
+  options.url = url;
+  return request(options)
+}
+
 
 export default {
   request,
   get,
-  post
+  post,
+  put
 }

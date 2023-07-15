@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:35:24
- * @LastEditTime: 2023-07-01 10:48:54
+ * @LastEditTime: 2023-07-15 14:22:03
  * @LastEditors: YangJianBing
  * @Description: 待缴费详情
  * @FilePath: /uniapp-web/pages/page/payDetails.vue
@@ -85,7 +85,7 @@ export default {
   methods: {
     getDetails() {
       this.$request
-        .get("/rest/pay/details?checkSum=starlab", {
+        .get("/rest/pay/detail?checkSum=starlab", {
           payNo: uni.getStorageSync("payNo"),
         })
         .then(
