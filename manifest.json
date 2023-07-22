@@ -2,8 +2,8 @@
     "name" : "橄榄海",
     "appid" : "__UNI__D95787D",
     "description" : "应用描述",
-    "versionName" : "1.0.37",
-    "versionCode" : 37,
+    "versionName" : "1.0.40",
+    "versionCode" : 40,
     "transformPx" : false,
     "app-plus" : {
         "usingComponents" : true,

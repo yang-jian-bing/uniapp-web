@@ -1,40 +1,57 @@
 <template>
-  <view class="page">
+  <view class="page home-box">
     <view class="header-min-box"> </view>
     <view class="header-box">
-      <view class="pageheaders">
-        <view class="flex">
+      <view class="flex-between p-l-15 p-r-15">
+        <view>
           <image
-            src="../../../assets/img/home-icon/sqtz.png"
-            class="img-100"
+            src="../../../assets/img/home-icon/fz.png"
+            class="h-30"
             alt=""
             srcset=""
           />
-          <picker
-            @change="houseChange"
-            :value="selectedIndex"
-            range-key="address"
-            :range="columns"
-          >
-            <view>{{ currentHouse.address }}</view>
-          </picker>
+        </view>
+        <view class="home-search" @click="goSearch">
+          <view class="search-content">搜索</view>
         </view>
         <view>
           <image
-            src="../../../assets/img/home-icon/dh.png"
-            class="img-100 m-l-15"
-            @click="phone"
+            src="../../../assets/img/home-icon/ld.png"
+            class="h-30"
             alt=""
             srcset=""
           />
         </view>
       </view>
-      <view>
-        <view class="home-search flex-between" @click="goSearch">
-          <view class="search-content">物业</view>
-          <view class="search-icon">搜索</view>
+
+      <view class="flex-between p-l-20 p-r-20 weather-box">
+        <view class="flex">
+          <view class="temperature">{{ weatherInfo.temperature }}</view>
+          <view class="font-20 p-t-15 m-l-5">°C</view>
+          <view class="m-l-10">
+            <view class="font-20 p-t-15">{{ weatherInfo.weather }}</view>
+            <view>
+              <picker
+                @change="houseChange"
+                :value="selectedIndex"
+                range-key="address"
+                :range="columns"
+              >
+                <view>{{ currentHouse.address }}</view>
+              </picker></view
+            >
+          </view>
+        </view>
+        <view>
+          <image
+            :src="weatherInfo.weather_pic"
+            class="weather-img"
+            alt=""
+            srcset=""
+          />
         </view>
       </view>
+
       <view class="flex m-t-10 p-b-20">
         <view class="min-icon" @click="goPage('myHouse')">
           <view class="text-center">
@@ -72,7 +89,7 @@
         <view class="min-icon" @click="goPage('faultRepairReport')">
           <view class="text-center">
             <image
-              src="../../../assets/img/home-icon/gzbx.jpg"
+              src="../../../assets/img/home-icon/gzbx.png"
               class="home-nav"
               alt=""
               srcset=""
@@ -95,6 +112,14 @@
         <view class="module-title">{{ item.name }}</view>
       </view>
     </view>
+    <view class="p-10">
+      <image
+        src="../../../assets/img/home-icon/gg.png"
+        style="width: 100%;"
+        alt=""
+        srcset=""
+      />
+    </view>
   </view>
 </template>
 
@@ -109,56 +134,45 @@ export default {
       columns: [],
       currentHouse: {},
       index: 1,
-      moduleList: [],
-      moduleList1: [
-        {
-          name: "客服",
-          id: "",
-          imgUrl: require("../../../assets/img/home/kf.svg"),
-          icon: "#icon-gonggao",
-        },
-        {
-          name: "故障报修",
-          id: "",
-          imgUrl: require("../../../assets/img/home/gzbx.svg"),
-          icon: "#icon-sousuo",
-        },
+      weatherInfo: {},
+      // moduleList: [],
+      moduleList: [
         {
           name: "杂活",
           id: "",
-          imgUrl: require("../../../assets/img/home/zh.svg"),
+          imgUrl: require("../../../assets/img/home/zh.png"),
           icon: "#icon-luntan",
         },
 
         {
           name: "跑腿",
           id: "",
-          imgUrl: require("../../../assets/img/home/pt.svg"),
+          imgUrl: require("../../../assets/img/home/pt.png"),
           icon: "#icon-fushi",
         },
 
         {
           name: "社区送菜",
           id: "",
-          imgUrl: require("../../../assets/img/home/sqsc.svg"),
+          imgUrl: require("../../../assets/img/home/sqsc.png"),
           icon: "#icon-fushi",
         },
         {
           name: "海鲜市场",
           id: "",
-          imgUrl: require("../../../assets/img/home/hxsc.svg"),
+          imgUrl: require("../../../assets/img/home/hxsc.png"),
           icon: "#icon-fushi",
         },
         {
           name: "家政服务",
           id: "",
-          imgUrl: require("../../../assets/img/home/jzfw.svg"),
+          imgUrl: require("../../../assets/img/home/jzfw.png"),
           icon: "#icon-fushi",
         },
         {
           name: "干洗",
           id: "",
-          imgUrl: require("../../../assets/img/home/gx.svg"),
+          imgUrl: require("../../../assets/img/home/gx.png"),
           icon: "#icon-wuliu",
         },
         {
@@ -328,8 +342,31 @@ export default {
   },
   created() {
     this.getHouses();
+    this.getWeather();
   },
   methods: {
+    getWeather() {
+      const url = "http://ali-weather.showapi.com/area-to-weather";
+      uni.request({
+        url, // 请求的地址
+        method: "GET", // 请求方法
+        data: {
+          area: "雁塔区",
+        },
+        header: {
+          Authorization: "APPCODE 9cd390c54ccf414ca79eb21a0084bf59",
+        },
+        success: (res) => {
+          // 请求成功时的处理
+          console.log(res.data);
+          this.weatherInfo = res.data.showapi_res_body.now;
+        },
+        fail: (err) => {
+          // 请求失败时的处理
+          console.error(err);
+        },
+      });
+    },
     getHouses() {
       this.$request
         .get("/rest/user/my-house?checkSum=starlab", {
@@ -338,9 +375,9 @@ export default {
         })
         .then(
           (res) => {
-            this.columns = res.data.data.map(item=>{
-              item.address = `${item.communityName}${item.building}号楼${item.unit}单元${item.floor}${item.roomNo}`
-              return item
+            this.columns = res.data.data.map((item) => {
+              item.address = `${item.communityName}${item.building}号楼${item.unit}单元${item.floor}${item.roomNo}`;
+              return item;
             });
             this.currentHouse = this.columns[0];
             uni.setStorageSync("currentHouse", this.columns[0]);
@@ -373,22 +410,43 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.home-box {
+  background: url("../../../assets/img/home-icon/bg.png") no-repeat;
+  background-size: 100% auto;
+}
+.weather-box {
+  color: #fff;
+  margin-top: 10px;
+  .temperature {
+    font-size: 60px;
+    font-weight: bold;
+  }
+  .weather-img {
+    height: 50px;
+    width: 50px;
+    margin-top: 15px;
+  }
+}
+.h-30 {
+  height: 32px;
+  width: 32px;
+}
 .home-nav {
   width: 40px;
   height: 40px;
   margin-top: 15px;
 }
 .home-search {
-  height: 40px;
-  line-height: 40px;
-  border: solid 2px rgb(221, 44, 52);
-  border-radius: 20px;
-  margin: 10px;
-  padding: 5px;
+  height: 32px;
+  line-height: 32px;
+  border: solid 2px #fff;
+  border-radius: 16px;
+  padding: 1px 5px;
+  width: calc(100vw - 120px);
   .search-content {
     height: 26px;
     line-height: 26px;
-    color: #999;
+    color: #eee;
     padding-left: 10px;
   }
   .search-icon {
@@ -460,7 +518,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   background: #fff;
-  margin: 10px;
 }
 .module-icon {
   width: 20%;
