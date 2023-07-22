@@ -135,7 +135,6 @@ export default {
       currentHouse: {},
       index: 1,
       weatherInfo: {},
-      // moduleList: [],
       moduleList: [
         {
           name: "杂活",
@@ -178,163 +177,163 @@ export default {
         {
           name: "接送娃",
           id: "",
-          imgUrl: require("../../../assets/img/home/jsw.svg"),
+          imgUrl: require("../../../assets/img/home/jsw.png"),
           icon: "#icon-wuliu",
         },
         {
           name: "托幼服务",
           id: "",
-          imgUrl: require("../../../assets/img/home/tyfw.svg"),
+          imgUrl: require("../../../assets/img/home/tyfw.png"),
           icon: "#icon-jiaju",
         },
         {
           name: "家教",
           id: "",
-          imgUrl: require("../../../assets/img/home/jj.svg"),
+          imgUrl: require("../../../assets/img/home/jj.png"),
           icon: "#icon-zengsong",
         },
         {
           name: "陪护",
           id: "",
-          imgUrl: require("../../../assets/img/home/ph.svg"),
+          imgUrl: require("../../../assets/img/home/ph.png"),
           icon: "#icon-zhanghaoguanli",
         },
         {
           name: "代办汽车保养",
           id: "",
-          imgUrl: require("../../../assets/img/home/dbqcby.svg"),
+          imgUrl: require("../../../assets/img/home/dbqcby.png"),
           icon: "#icon-huodong",
         },
         {
           name: "代办事故处理",
           id: "",
-          imgUrl: require("../../../assets/img/home/dbsgcl.svg"),
+          imgUrl: require("../../../assets/img/home/dbsgcl.png"),
           icon: "#icon-huodong",
         },
         {
           name: "代办验车",
           id: "",
-          imgUrl: require("../../../assets/img/home/dbyc.svg"),
+          imgUrl: require("../../../assets/img/home/dbyc.png"),
           icon: "#icon-jiaoyu",
         },
         {
           name: "极简订制门窗家具",
           id: "",
-          imgUrl: require("../../../assets/img/home/jjdzmcjj.svg"),
+          imgUrl: require("../../../assets/img/home/jjdzmcjj.png"),
           icon: "#icon-wupinshenqing",
         },
         {
           name: "极简家装",
           id: "",
-          imgUrl: require("../../../assets/img/home/jjjz.svg"),
+          imgUrl: require("../../../assets/img/home/jjjz.png"),
           icon: "#icon-peisong",
         },
         {
           name: "上门医疗",
           id: "",
-          imgUrl: require("../../../assets/img/home/smyl.svg"),
+          imgUrl: require("../../../assets/img/home/smyl.png"),
           icon: "#icon-qiche",
         },
         {
           name: "旧物",
           id: "",
-          imgUrl: require("../../../assets/img/home/jw.svg"),
+          imgUrl: require("../../../assets/img/home/jw.png"),
           icon: "#icon-luntan",
         },
         {
           name: "约饭AA",
           id: "",
-          imgUrl: require("../../../assets/img/home/yf.svg"),
+          imgUrl: require("../../../assets/img/home/yf.png"),
           icon: "#icon-luntan",
         },
         {
           name: "约电影",
           id: "",
-          imgUrl: require("../../../assets/img/home/ydy.svg"),
+          imgUrl: require("../../../assets/img/home/ydy.png"),
           icon: "#icon-luntan",
         },
         {
           name: "约图书馆",
           id: "",
-          imgUrl: require("../../../assets/img/home/ytsg.svg"),
+          imgUrl: require("../../../assets/img/home/ytsg.png"),
           icon: "#icon-luntan",
         },
         {
           name: "约广场舞",
           id: "",
-          imgUrl: require("../../../assets/img/home/ygcw.svg"),
+          imgUrl: require("../../../assets/img/home/ygcw.png"),
           icon: "#icon-luntan",
         },
         {
           name: "约交谊舞",
           id: "",
-          imgUrl: require("../../../assets/img/home/yjjw.svg"),
+          imgUrl: require("../../../assets/img/home/yjjw.png"),
           icon: "#icon-luntan",
         },
         {
           name: "约足球",
           id: "",
-          imgUrl: require("../../../assets/img/home/yzq.svg"),
+          imgUrl: require("../../../assets/img/home/yzq.png"),
           icon: "#icon-luntan",
         },
         {
           name: "约篮球",
           id: "",
-          imgUrl: require("../../../assets/img/home/ylq.svg"),
+          imgUrl: require("../../../assets/img/home/ylq.png"),
           icon: "#icon-luntan",
         },
         {
           name: "约羽毛球",
           id: "",
-          imgUrl: require("../../../assets/img/home/yymq.svg"),
+          imgUrl: require("../../../assets/img/home/yymq.png"),
           icon: "#icon-luntan",
         },
         {
           name: "约跑步",
           id: "",
-          imgUrl: require("../../../assets/img/home/ypb.svg"),
+          imgUrl: require("../../../assets/img/home/ypb.png"),
           icon: "#icon-luntan",
         },
         {
           name: "约逛公园",
           id: "",
-          imgUrl: require("../../../assets/img/home/yggy.svg"),
+          imgUrl: require("../../../assets/img/home/yggy.png"),
           icon: "#icon-luntan",
         },
         {
           name: "约爬山",
           id: "",
-          imgUrl: require("../../../assets/img/home/yps.svg"),
+          imgUrl: require("../../../assets/img/home/yps.png"),
           icon: "#icon-luntan",
         },
         {
           name: "约溜娃",
           id: "",
-          imgUrl: require("../../../assets/img/home/ylw.svg"),
+          imgUrl: require("../../../assets/img/home/ylw.png"),
           icon: "#icon-luntan",
         },
         {
           name: "约自由行",
           id: "",
-          imgUrl: require("../../../assets/img/home/yzyx.svg"),
+          imgUrl: require("../../../assets/img/home/yzyx.png"),
           icon: "#icon-luntan",
         },
         {
           name: "约自驾游",
           id: "",
-          imgUrl: require("../../../assets/img/home/yzjy.svg"),
+          imgUrl: require("../../../assets/img/home/yzjy.png"),
           icon: "#icon-luntan",
         },
         {
           name: "社区DIY团队游",
           id: "",
-          imgUrl: require("../../../assets/img/home/qqtty.svg"),
+          imgUrl: require("../../../assets/img/home/qqtty.png"),
           icon: "#icon-luntan",
         },
         {
           name: "七嘴八舌",
           id: "",
-          imgUrl: require("../../../assets/img/home/qzbs.svg"),
+          imgUrl: require("../../../assets/img/home/qzbs.png"),
           icon: "#icon-luntan",
         },
       ],
@@ -410,10 +409,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.home-box {
-  background: url("../../../assets/img/home-icon/bg.png") no-repeat;
-  background-size: 100% auto;
-}
+
 .weather-box {
   color: #fff;
   margin-top: 10px;
