@@ -1,6 +1,6 @@
 <template>
   <view>
-    <view class="header-min-box"> </view>
+    <view class="header-min-box b-g-ee0a24"> </view>
     <!-- <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad"> -->
         <view v-for="(item, index) of list" :key="index">
