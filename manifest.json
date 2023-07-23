@@ -2,8 +2,8 @@
     "name" : "橄榄海",
     "appid" : "__UNI__D95787D",
     "description" : "应用描述",
-    "versionName" : "1.0.40",
-    "versionCode" : 40,
+    "versionName" : "1.0.47",
+    "versionCode" : 47,
     "transformPx" : false,
     "app-plus" : {
         "usingComponents" : true,
@@ -24,7 +24,9 @@
             "Speech" : {},
             "VideoPlayer" : {},
             "OAuth" : {},
-            "Webview-x5" : {}
+            "Webview-x5" : {},
+            "Geolocation" : {},
+            "Maps" : {}
         },
         "compatible" : {
             "ignoreVersion" : true //true表示忽略版本检查提示框，HBuilderX1.9.0及以上版本支持  
@@ -85,7 +87,20 @@
                         "UniversalLinks" : ""
                     }
                 },
-                "ad" : {}
+                "ad" : {},
+                "geolocation" : {
+                    "amap" : {
+                        "__platform__" : [ "android" ],
+                        "appkey_ios" : "5e418fd3fd2ec7c81b48b9fcadaf0504",
+                        "appkey_android" : "5e418fd3fd2ec7c81b48b9fcadaf0504"
+                    }
+                },
+                "maps" : {
+                    "amap" : {
+                        "appkey_ios" : "5e418fd3fd2ec7c81b48b9fcadaf0504",
+                        "appkey_android" : "5e418fd3fd2ec7c81b48b9fcadaf0504"
+                    }
+                }
             },
             "orientation" : [ "portrait-primary" ],
             "splashscreen" : {
