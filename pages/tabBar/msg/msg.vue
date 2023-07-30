@@ -1,73 +1,121 @@
 <template>
   <view>
-    <view class="header-min-box b-g-ee0a24"> </view>
-    <!-- <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
-      <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad"> -->
-        <view v-for="(item, index) of list" :key="index">
-          <view>
-            <view class="text-center col-8686" style="padding:16px 0 12px">
-              {{ item.sendTime }}
+    <view class="header-min-box b-g-ee0a24" style="padding-top: 40px;">
+      <uni-search-bar placeholder="搜索"  bgColor="#fff"  @confirm="search" />
+    </view>
+    <view class="msg-box">
+      <view class="b-g-ee0a24">
+        <view class="header-line"></view>
+      </view>
+      <view v-for="(item, index) of list" class="p-t-10 b-g-f" :key="index">
+        <view class="flex p-10 p-t-0">
+          <view class="msg-img">
+            <image
+              src="../../../assets/img/login/login-logo.png"
+              class="home-nav"
+              alt=""
+              srcset=""
+            />
+          </view>
+          <view class="msg-content">
+            <view class="flex-between">
+              <view @click="details" class="font-16 font-bold">
+                {{ item.submitPersonUserName }}
+              </view>
+              <view>
+                {{ item.sendTime }}
+              </view>
             </view>
-            <view style="border-radius:4px" class="b-g-f m-l-15 m-r-15 p-15" @click="details">
-              <view class="flex align-items">
-                <view class="col-1b1b">{{ item.submitPersonUserName }}</view>
-              </view>
-              <view class="m-t-10">
-                {{ item.title }}
-              </view>
+            <view class="m-t-5 min-title">
+              {{ item.title }}
             </view>
           </view>
         </view>
-      <!-- </van-list>
-    </van-pull-refresh> -->
+      </view>
+    </view>
   </view>
 </template>
 
 <script>
-// import { List, Cell, Tab, Tabs, Divider, Button, Sticky, Toast, PullRefresh } from 'vant'
 export default {
-  components: {
-    // [Divider.name]: Divider,
-    // [List.name]: List,
-    // [Cell.name]: Cell,
-    // [Tab.name]: Tab,
-    // [Tabs.name]: Tabs,
-    // [PullRefresh.name]: PullRefresh,
-    // [Button.name]: Button,
-    // [Toast.name]: Toast,
-    // [Sticky.name]: Sticky
-  },
   data() {
     return {
-      value: '',
+      value: "",
       loading: false,
       finished: false,
       total: 1,
       list: [
         {
-          sendTime: '2023-03-12 12:12',
-          submitPersonUserName: '通知',
-          title: '物业清明放假一天'
-        }
+          sendTime: "12:12",
+          submitPersonUserName: "通知",
+          title: "物业清明放假一天",
+        },
+        {
+          sendTime: "6月23日",
+          submitPersonUserName: "通知",
+          title: "物业清明放假一天",
+        },
+        {
+          sendTime: "2022年12月11日",
+          submitPersonUserName: "通知",
+          title: "物业清明放假一天",
+        },
       ],
       refreshing: false,
       page: 1,
       limit: 10,
       isFrist: true,
-      type: '1',
-      processInstanceStatus: '',
+      type: "1",
+      processInstanceStatus: "",
       businessTotal: 0,
-      systemTotal: 0
-    }
+      systemTotal: 0,
+    };
   },
-  created() {
-   
-  },
+  created() {},
   mounted() {},
   methods: {
-
-  }
-}
+    search(){}
+  },
+};
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.header-line{
+  border-radius: 10px 10px 0 0;
+  background: #fff;
+  overflow: hidden;
+  height: 10px;
+  width: 100vw;
+  border: none;
+}
+.header-min-box{
+  overflow: hidden;
+}
+.msg-img {
+  border: none;
+  flex-shrink: 0;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  
+  image {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+
+.msg-content {
+  flex-shrink: 0;
+  width: calc(100vw - 70px);
+  border-bottom: solid 1px #ddd;
+  padding-bottom: 15px;
+  padding-right: 10px;
+  padding-top: 2px;
+  .min-title {
+    color: #666;
+  }
+}
+</style>

@@ -2,7 +2,7 @@
   <view class="myConter">
     <view class="myHeader">
       <view class="txBox">
-        <image src="../../../assets/img/people.png" />
+        <image src="../../../assets/img/login/login-logo.png" />
       </view>
       <view class="infoBox">
         <!-- <view class="isName">{{ userObj.name }}</view> -->
@@ -11,27 +11,35 @@
         </view>
       </view>
     </view>
-    <view
-      class="p-15 b-b"
-      v-for="(item, index) of list"
-      :key="index"
-      @click="toPage(item.page)"
-    >
-      <!-- 使用 title 插槽来自定义标题 -->
-      <view class="flex-between">
-        <view class="flex align-items">
-          <view class="img-100 m-r-10">
-            <image :src="item.icon" style="height: 24px; width: 24px" />
+    <view class="b-g-ee0a24">
+      <view class="header-line"></view>
+    </view>
+
+    <view class="m-10 b-g-f m-t-0 b-r-5">
+      <view
+        class="p-l-10 p-r-10 p-t-15 p-b-15"
+        :class="[index !== list.length - 1 ? 'b-b' : '']"
+        v-for="(item, index) of list"
+        :key="index"
+        @click="toPage(item.page)"
+      >
+        <!-- 使用 title 插槽来自定义标题 -->
+        <view class="flex-between">
+          <view class="flex align-items">
+            <view class="img-100 m-r-10">
+              <image :src="item.icon" style="height: 24px; width: 24px" />
+            </view>
+            <view class="col-1b1b font-14">
+              {{ item.text }}
+            </view>
           </view>
-          <view class="col-1b1b font-14">
-            {{ item.text }}
+          <view class="p-t-3">
+            <uni-icons type="forward" size="20"></uni-icons>
           </view>
-        </view>
-        <view>
-          <view class="icon iconfont icon-arrow-right font-20"></view>
         </view>
       </view>
     </view>
+
     <view class="p-20">
       <button type="warn" @click="logout">退出登录</button>
     </view>
@@ -127,114 +135,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import "@/assets/font/iconfont.css";
-.iconfont {
-  font-size: 20px;
-}
-.buttonstyle {
-  margin-top: 60px;
-  width: 90%;
-  left: 5%;
-}
-.content {
-  border-top: 10px solid #eee;
-}
-.cell-none .van-icon {
-  visibility: hidden;
-}
-
-.dateTime {
-  line-height: 47px;
-}
-.time_box {
-  padding: 8px 15px;
-  font-size: 18px;
-}
-.time_box_right {
-  padding: 8px 15px;
-}
-.line {
-  height: 10px;
-  background-color: #eeeeee;
-}
-.date_title {
-  color: #2c82ff;
-  vertical-align: middle;
-}
-.icon_down {
-  padding-left: 7px;
-  vertical-align: middle;
-  color: #868686;
-}
-.date_btn {
-  border: 1px solid #dddddd;
-  border-radius: 5px;
-}
-.date_tabs {
-  padding-bottom: 10px;
-}
-.title_wrap {
-  display: flex;
-  padding-top: 5px;
-}
-.day_title {
-  color: #cccccc;
-  background-color: transparent !important;
-}
-.day_item {
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  margin: 3.5px 2.5px;
-  background: #eeeeee;
-  text-align: center;
-  line-height: 32px;
-}
-.day_item:first-child {
-  color: #cccccc;
-  background: transparent;
-}
-#date_wrap > view {
-  justify-content: center;
-}
-.legend {
-  box-shadow: 0px 2px 8px 0px #cccccc;
-  border-radius: 3px;
-  margin: 7px 10px 0 10px;
-}
-/deep/.van-search__content {
-  background-color: #eee;
-  border-radius: 14px;
-}
-.legend_wrap {
-  display: flex;
-  justify-content: space-between;
-  color: #1b1b1b;
-}
-.legend_item > view {
-  margin-bottom: 10px;
-}
 .myHeader {
   width: 100%;
-  height: 150px;
-  padding-top: 50px;
-  margin-bottom: 10px;
   background: #dd2c34;
   background-size: 100% 100%;
+  padding: 0 10px;
+  padding-bottom: 10px;
+  padding-top: 40px;
   display: flex;
   align-items: center;
-  padding-left: 24px;
   position: relative;
 }
 .txBox {
+  border-radius: 6px;
+  overflow: hidden;
+  width: 58px;
+  height: 58px;
   image {
     width: 58px;
     height: 58px;
   }
 }
-.txBox > img {
-  width: 100%;
-  height: 100%;
+.p-t-3{
+  padding-top: 3px;
 }
 .infoBox {
   padding-left: 16px;
@@ -250,25 +173,13 @@ export default {
   color: #ffffff;
   padding-top: 5px;
 }
-.setting,
-.message {
-  width: 20px;
-  height: 20px;
-}
-.setting {
-  position: absolute;
-  top: 40px;
-  right: 40px;
-}
-.message {
-  position: absolute;
-  top: 40px;
-  right: 24px;
-}
-.myConter .van-cell {
-  padding: 16px;
-}
-.myConter .van-cell::after {
-  right: 0;
+
+.header-line {
+  border-radius: 10px 10px 0 0;
+  background: #f5f5f5;
+  overflow: hidden;
+  height: 10px;
+  width: 100vw;
+  border: none;
 }
 </style>
