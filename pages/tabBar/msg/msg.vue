@@ -1,14 +1,20 @@
 <template>
   <view>
-    <view class="header-min-box b-g-ee0a24" style="padding-top: 40px;">
-      <uni-search-bar placeholder="搜索"  bgColor="#fff"  @confirm="search" />
+    <view
+      class="header-min-box b-g-ee0a24"
+      style="padding-top: 40px; padding-bottom: 5px"
+    >
+      <uni-search-bar placeholder="搜索" bgColor="#fff" @confirm="search" />
     </view>
     <view class="msg-box">
       <view class="b-g-ee0a24">
         <view class="header-line"></view>
       </view>
-      <view v-for="(item, index) of list" class="p-t-10 b-g-f" :key="index">
-        <view class="flex p-10 p-t-0">
+      <view v-for="(item, index) of list" class="p-b-5 b-g-f" :key="index">
+        <view
+          class="flex p-t-0"
+          :class="[index === list.length - 1 ? 'p-l-10 p-r-10' : 'p-10']"
+        >
           <view class="msg-img">
             <image
               src="../../../assets/img/login/login-logo.png"
@@ -17,7 +23,10 @@
               srcset=""
             />
           </view>
-          <view class="msg-content">
+          <view
+            class="msg-content"
+            :class="[index === list.length - 1 ? 'p-b-5' : 'b-b p-b-15']"
+          >
             <view class="flex-between">
               <view @click="details" class="font-16 font-bold">
                 {{ item.submitPersonUserName }}
@@ -47,19 +56,30 @@ export default {
       list: [
         {
           sendTime: "12:12",
-          submitPersonUserName: "通知",
-          title: "物业清明放假一天",
+          submitPersonUserName: "公告通知",
+          title: "2023年8月5号幼儿园开始报名。",
+        },
+        {
+          sendTime: "7月30日",
+          submitPersonUserName: "付款提醒",
+          title: "付款成功",
+        },
+        {
+          sendTime: "7月29日",
+          submitPersonUserName: "安全通告",
+          title: "根据气象部门预报，明天有可能会有大暴雨",
         },
         {
           sendTime: "6月23日",
-          submitPersonUserName: "通知",
-          title: "物业清明放假一天",
+          submitPersonUserName: "维修请求",
+          title: "单元门口照明灯不亮，请物业维修",
         },
         {
           sendTime: "2022年12月11日",
-          submitPersonUserName: "通知",
-          title: "物业清明放假一天",
+          submitPersonUserName: "反馈调查",
+          title: "请对物业的服务进行评价",
         },
+        
       ],
       refreshing: false,
       page: 1,
@@ -74,13 +94,13 @@ export default {
   created() {},
   mounted() {},
   methods: {
-    search(){}
+    search() {},
   },
 };
 </script>
 
 <style scoped lang="scss">
-.header-line{
+.header-line {
   border-radius: 10px 10px 0 0;
   background: #fff;
   overflow: hidden;
@@ -88,7 +108,7 @@ export default {
   width: 100vw;
   border: none;
 }
-.header-min-box{
+.header-min-box {
   overflow: hidden;
 }
 .msg-img {
@@ -99,19 +119,16 @@ export default {
   width: 50px;
   height: 50px;
   margin-right: 10px;
-  
+
   image {
     width: 50px;
     height: 50px;
   }
 }
 
-
 .msg-content {
   flex-shrink: 0;
   width: calc(100vw - 70px);
-  border-bottom: solid 1px #ddd;
-  padding-bottom: 15px;
   padding-right: 10px;
   padding-top: 2px;
   .min-title {

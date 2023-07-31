@@ -2,7 +2,7 @@
   <view class="myConter">
     <view class="myHeader">
       <view class="txBox">
-        <image src="../../../assets/img/login/login-logo.png" />
+        <image src="../../../assets/img/login/logo.png" />
       </view>
       <view class="infoBox">
         <!-- <view class="isName">{{ userObj.name }}</view> -->
@@ -15,25 +15,25 @@
       <view class="header-line"></view>
     </view>
 
-    <view class="m-10 b-g-f m-t-0 b-r-5">
+    <view class="m-10 b-g-f m-t-0 b-r-5 p-l-10">
       <view
-        class="p-l-10 p-r-10 p-t-15 p-b-15"
+        class="p-r-10"
         :class="[index !== list.length - 1 ? 'b-b' : '']"
         v-for="(item, index) of list"
         :key="index"
         @click="toPage(item.page)"
       >
         <!-- 使用 title 插槽来自定义标题 -->
-        <view class="flex-between">
-          <view class="flex align-items">
-            <view class="img-100 m-r-10">
+        <view class="flex-between h-center">
+          <view class="flex title-box">
+            <view class="img-100 m-r-10 h-center flex">
               <image :src="item.icon" style="height: 24px; width: 24px" />
             </view>
-            <view class="col-1b1b font-14">
+            <view class="col-1b1b font-16">
               {{ item.text }}
             </view>
           </view>
-          <view class="p-t-3">
+          <view>
             <uni-icons type="forward" size="20"></uni-icons>
           </view>
         </view>
@@ -173,7 +173,14 @@ export default {
   color: #ffffff;
   padding-top: 5px;
 }
-
+.title-box{
+  height: 50px;
+  line-height: 50px;
+   align-items:center;
+}
+.h-center{
+   align-items:center;
+}
 .header-line {
   border-radius: 10px 10px 0 0;
   background: #f5f5f5;
