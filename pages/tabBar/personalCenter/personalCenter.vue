@@ -1,24 +1,21 @@
 <template>
-  <view class="myConter">
-    <view class="myHeader">
-      <view class="txBox">
-        <image src="../../../assets/img/login/logo.png" />
-      </view>
-      <view class="infoBox">
-        <!-- <view class="isName">{{ userObj.name }}</view> -->
+  <view class="">
+    <view class="home-box myHeader flex-between" >
+      <view class="p-l-10">
+        <view class="isName">王五 </view>
         <view class="isZWinfo">
           <view>{{ userObj.phone }}</view>
         </view>
       </view>
-    </view>
-    <view class="b-g-ee0a24">
-      <view class="header-line"></view>
+      <view class="txBox">
+        <image src="../../../assets/img/login/min-logo.jpg" />
+      </view>
     </view>
 
-    <view class="m-10 b-g-f m-t-0 b-r-5 p-l-10">
+    <view class="b-g-f m-t-0 b-r-5 p-l-10">
       <view
         class="p-r-10"
-        :class="[index !== list.length - 1 ? 'b-b' : '']"
+        :class="[index !== list.length - 1 ? 'border-b' : '']"
         v-for="(item, index) of list"
         :key="index"
         @click="toPage(item.page)"
@@ -137,45 +134,43 @@ export default {
 <style lang="scss" scoped>
 .myHeader {
   width: 100%;
-  background: #dd2c34;
   background-size: 100% 100%;
-  padding: 0 10px;
   padding-bottom: 10px;
-  padding-top: 40px;
-  display: flex;
-  align-items: center;
-  position: relative;
+  padding-top: 60px;
+
+}
+.border-b{
+  border-bottom: solid 1px #eee;
 }
 .txBox {
   border-radius: 6px;
   overflow: hidden;
-  width: 58px;
-  height: 58px;
+  margin-right: 10px;
+  width: 48px;
+  height: 48px;
   image {
-    width: 58px;
-    height: 58px;
+    width: 48px;
+    height: 48px;
   }
 }
 .p-t-3{
   padding-top: 3px;
 }
-.infoBox {
-  padding-left: 16px;
-}
+
 .isName {
   font-size: 18px;
   font-weight: 500;
   color: #ffffff;
-}
-.isZWinfo {
-  font-size: 16px;
-  font-weight: 400;
-  color: #ffffff;
   padding-top: 5px;
 }
+.isZWinfo {
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffff;
+}
 .title-box{
-  height: 50px;
-  line-height: 50px;
+  height: 60px;
+  line-height: 60px;
    align-items:center;
 }
 .h-center{

@@ -1,15 +1,12 @@
 <template>
-  <view>
+  <view class="home-box" style="background-size: 100% 27%">
     <view
-      class="header-min-box b-g-ee0a24"
-      style="padding-top: 40px; padding-bottom: 5px"
+      class="header-min-box "
+      style="padding-top: 60px; padding-bottom: 5px;"
     >
-      <uni-search-bar placeholder="搜索" bgColor="#fff" @confirm="search" />
+      <uni-search-bar placeholder="搜索" radius="100" bgColor="#fff" @confirm="search" />
     </view>
     <view class="msg-box">
-      <view class="b-g-ee0a24">
-        <view class="header-line"></view>
-      </view>
       <view v-for="(item, index) of list" class="p-b-5 b-g-f" :key="index">
         <view
           class="flex p-t-0"
@@ -111,10 +108,16 @@ export default {
 .header-min-box {
   overflow: hidden;
 }
+.msg-box{
+  padding-top: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
 .msg-img {
   border: none;
   flex-shrink: 0;
-  border-radius: 5px;
+  border-radius: 6px;
   overflow: hidden;
   width: 50px;
   height: 50px;
