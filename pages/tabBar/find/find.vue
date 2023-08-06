@@ -1,5 +1,5 @@
 <template>
-  <view class="myConter">
+  <view class="myConter home-box"  style="background-size: 100% 27%">
     <view class="header-min-box b-g-ee0a24"> </view>
 
     <view class="main-box">

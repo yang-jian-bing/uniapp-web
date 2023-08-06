@@ -7,7 +7,7 @@
       <uni-search-bar placeholder="搜索" radius="100" bgColor="#fff" @confirm="search" />
     </view>
     <view class="msg-box">
-      <view v-for="(item, index) of list" class="p-b-5 b-g-f" :key="index">
+      <view v-for="(item, index) of list" class="b-g-f" :key="index">
         <view
           class="flex p-t-0"
           :class="[index === list.length - 1 ? 'p-l-10 p-r-10' : 'p-10']"
@@ -25,10 +25,10 @@
             :class="[index === list.length - 1 ? 'p-b-5' : 'b-b p-b-15']"
           >
             <view class="flex-between">
-              <view @click="details" class="font-16 font-bold">
+              <view @click="details" class="font-14">
                 {{ item.submitPersonUserName }}
               </view>
-              <view>
+              <view class="min-title">
                 {{ item.sendTime }}
               </view>
             </view>
@@ -136,6 +136,7 @@ export default {
   padding-top: 2px;
   .min-title {
     color: #666;
+    font-size: 12px;
   }
 }
 </style>

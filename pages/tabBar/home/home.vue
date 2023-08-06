@@ -547,6 +547,7 @@ export default {
 }
 .module-title {
   font-weight: bold;
+  font-size: 12px;
 }
 .news-box {
   margin-top: 15px;
