@@ -111,14 +111,14 @@
         <view class="module-title">{{ item.name }}</view>
       </view>
     </view>
-    <view class="p-10">
+    <!-- <view class="p-10">
       <image
         src="../../../assets/img/home-icon/gg.png"
         style="width: 100%"
         alt=""
         srcset=""
       />
-    </view>
+    </view> -->
   </view>
 </template>
 

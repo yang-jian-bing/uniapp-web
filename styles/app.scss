@@ -866,3 +866,9 @@ table {
   background: url("@/assets/img/home-icon/bg.png") no-repeat;
   background-size: 100% auto;
 }
+.msg-search-box {
+  .uni-searchbar__box {
+    border: solid 2px #fff;
+    color: #fff;
+  }
+}

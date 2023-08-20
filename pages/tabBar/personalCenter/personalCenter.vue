@@ -11,7 +11,9 @@
         <image src="../../../assets/img/login/min-logo.jpg" />
       </view>
     </view>
-
+    <view class="p-l-10 p-t-20 p-b-20 font-16">
+      缴费
+    </view>
     <view class="b-g-f m-t-0 b-r-5 p-l-10">
       <view
         class="p-r-10"
@@ -21,7 +23,7 @@
         @click="toPage(item.page)"
       >
         <!-- 使用 title 插槽来自定义标题 -->
-        <view class="flex-between h-center">
+        <view class="flex-between h-center p-l-10">
           <view class="flex title-box">
             <view class="img-100 m-r-10 h-center flex">
               <image :src="item.icon" style="height: 24px; width: 24px" />
@@ -54,18 +56,18 @@ export default {
         {
           text: "待缴费",
           page: "toBePaid",
-          icon: require("@/assets/img/personalIcon/htgl.png"),
+          icon: require("@/assets/img/personalIcon/djf.png"),
         },
         {
           text: "缴费记录",
           page: "billToBePaidList",
-          icon: require("@/assets/img/personalIcon/lsfpgl.png"),
+          icon: require("@/assets/img/personalIcon/jfjl.png"),
         },
-        {
-          text: "软件升级",
-          page: "update",
-          icon: require("@/assets/img/personalIcon/rjsj.png"),
-        },
+        // {
+        //   text: "软件升级",
+        //   page: "update",
+        //   icon: require("@/assets/img/personalIcon/jfjl.png"),
+        // },
       ],
       userObj: {
         name: uni.getStorageSync("name"),
@@ -158,7 +160,7 @@ export default {
 }
 
 .isName {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 500;
   color: #ffffff;
   padding-top: 5px;
@@ -183,5 +185,8 @@ export default {
   height: 10px;
   width: 100vw;
   border: none;
+}
+.font-16{
+  font-size: 16px;
 }
 </style>
