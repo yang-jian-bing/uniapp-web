@@ -1,4 +1,3 @@
-
 <template>
   <view class="page">
     <uni-nav-bar
@@ -134,7 +133,7 @@ export default {
       obj: {},
     };
   },
-  created() {
+  onShow() {
     this.getDetails();
   },
   methods: {

@@ -91,10 +91,10 @@
         暂无参与人
       </view>
     </view>
-    <view class="m-t-20 m-b-20 m-10 text-center">
+    <view class="m-t-20 m-b-20 m-10 text-center" v-if="!isJoin">
       <button type="warn" @click="submitData()">我要加入</button>
     </view>
-    <uni-popup ref="alertDialog" type="dialog">
+    <uni-popup ref="alertDialog" type="dialog" >
       <uni-popup-dialog
         type="warn"
         cancelText="取消"
@@ -113,6 +113,7 @@ export default {
   components: {},
   data() {
     return {
+      isJoin: false,
       obj: {
         title: "", //房屋
         location: "",
@@ -121,8 +122,7 @@ export default {
         startTime: "", // 联系电话
         endTime: "", //描述
         description: "", //照片
-        images: [],
-        participantList: [],
+        images: []
       },
     };
   },
@@ -139,6 +139,9 @@ export default {
         urls: [url],
       });
     },
+    submitData(){
+      this.$refs.alertDialog.open('center')
+    },
     getDetails() {
       this.$request
         .get("/rest/activity/get-activity-details", {
@@ -153,6 +156,9 @@ export default {
             data.startTime = dayjs(data.startTime).format("YYYY-MM-DD");
             data.endTime = dayjs(data.endTime).format("YYYY-MM-DD");
             data.startTime = dayjs(data.startTime).format("YYYY-MM-DD");
+            this.isJoin = data.participantList.some(item=>{
+              return item.userId === uni.getStorageSync('userId')
+            })
             this.obj = data;
           },
           (err) => {
