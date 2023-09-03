@@ -1,12 +1,12 @@
 <template>
   <view class="login-register">
     <image
-          src="../../../assets/img/login/top.png"
-          class="min-logo"
-          alt=""
-          srcset=""
-          style="width: 100%;border-radius:0;"
-        />
+      src="../../../assets/img/login/top.png"
+      class="min-logo"
+      alt=""
+      srcset=""
+      style="width: 100%; border-radius: 0"
+    />
     <view class="con">
       <view class="logo-box">
         <image
@@ -23,7 +23,7 @@
           <input
             v-model="principal"
             type="text"
-            class="text "
+            class="text"
             placeholder="请输入手机号"
           />
         </view>
@@ -47,6 +47,23 @@
         >
       </view>
       <view class="btn" @click="login">登录</view>
+      <view class="flex m-t-10">
+        <view style="width: 20px; overflow: hidden;margin-top: -3px;">
+
+          <uni-data-checkbox
+          selectedTextColor="#c91915"
+          selectedColor="#c91915"
+          v-model="isRead"
+          multiple
+          :localdata="hobbys"
+          />
+        </view>
+        我已阅读并同意
+        <view style="text-decoration: underline" @click="goWebView('user-agreement')">用户协议</view>和<view
+          style="text-decoration: underline" @click="goWebView('privacy-policy')"
+          >隐私政策</view
+        >
+      </view>
     </view>
   </view>
 </template>
@@ -56,6 +73,8 @@ import crypto from "crypto";
 export default {
   data() {
     return {
+      isRead: [],
+      hobbys: [{ text: "", value: true }],
       isAccountLogin: true, // 账号登录
       captchaVerification: "", // 验证码
       credentials: "", // 密码
@@ -69,6 +88,7 @@ export default {
   methods: {
     // 登录
     login() {
+     
       if (this.principal.trim() == "") {
         uni.showToast({
           title: "请输入手机号",
@@ -83,7 +103,13 @@ export default {
         });
         return false;
       }
-
+      if (this.isRead.length ===0) {
+        uni.showToast({
+          title: "请阅读协议",
+          icon: "error",
+        });
+        return false;
+      }
       const params = {
         phoneNum: this.principal,
         verifyCode: this.captchaVerification,
@@ -97,7 +123,7 @@ export default {
           Object.keys(res.data).map((key) => {
             uni.setStorageSync(key, res.data[key]);
           });
-          uni.setStorageSync('phoneNum', res.data.phoneNum.split("+86")[1]);
+          uni.setStorageSync("phoneNum", res.data.phoneNum.split("+86")[1]);
           uni.hideLoading();
           uni.showToast({
             title: "登录成功",
@@ -114,6 +140,11 @@ export default {
           console.log(err);
         }
       );
+    },
+    goWebView(page) {
+      uni.navigateTo({
+        url: `/pages/page/webView?page=${page}`,
+      });
     },
     getYzm() {
       if (this.num != 59) {
@@ -192,7 +223,11 @@ export default {
 </script>
 
 <style>
-.login-b-b{
+.uni-data-checklist .checklist-group .checklist-box {
+  margin-right: 0px !important;
+}
+
+.login-b-b {
   border-bottom: solid 3px #fff;
 }
 .logo-box {

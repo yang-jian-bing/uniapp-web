@@ -84,6 +84,15 @@
       }
     },
     {
+      "path": "pages/page/webView",
+      "style": {
+        "navigationBarTitleText": "",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
       "path": "pages/page/search",
       "style": {
         "navigationBarTitleText": "搜索",
