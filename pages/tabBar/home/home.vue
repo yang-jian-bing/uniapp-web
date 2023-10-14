@@ -98,7 +98,7 @@
         </view>
       </view>
     </view>
-    <view class="main-box">
+    <view class="main-box" v-if="false">
       <view
         class="module-icon"
         :key="index"

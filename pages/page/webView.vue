@@ -8,18 +8,20 @@
 export default {
   components: {},
   data() {
-    const page = this.$route.query.page
+    const page = uni.getStorageSync("pageName")
     return {
-      url: `https://www.shuainiba.com/admin/${page}`
+      url: `https://www.shuainiba.com/admin/${page}`,
     };
   },
   created() {},
-  methods: {
-   
-  },
+  methods: {},
 };
 </script>
 
 <style scoped lang="scss">
-
+.webb {
+  width: 100vh;
+  height: 100vh;
+  overflow: auto;
+}
 </style>

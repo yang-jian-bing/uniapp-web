@@ -142,8 +142,9 @@ export default {
       );
     },
     goWebView(page) {
+      uni.setStorageSync("pageName", page);
       uni.navigateTo({
-        url: `/pages/page/webView?page=${page}`,
+        url: `/pages/page/webView`,
       });
     },
     getYzm() {
