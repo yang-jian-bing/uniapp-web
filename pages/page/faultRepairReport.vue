@@ -1,7 +1,7 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-07-15 14:10:11
+ * @LastEditTime: 2023-11-04 15:01:12
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
  * @FilePath: /uniapp-web/pages/page/faultRepairReport.vue
@@ -19,7 +19,7 @@
       @clickRight="addFaultRepairReport"
       left-icon="left"
     ></uni-nav-bar>
-    <view class="m-t-5">
+    <view class="m-t-5 b-g-f">
       <uni-segmented-control
         :current="current"
         :values="items"
@@ -35,46 +35,37 @@
         v-for="(item, index) in list"
         :key="index"
       >
-        <view class="flex-between m-t-10">
-          <view class="font-14">房屋：</view>
-          <view class="font-14">
-            <view class="font-bold">{{ item.address }}</view>
+        <view class="flex-between">
+          <view class="font-bold font-16">{{ item.description }}</view>
+          <view class="">
+            <view class="col-EA4E70" v-if="item.status == 1">进行中</view>
+            <view class="col-12B929" v-else>已完成</view>
           </view>
         </view>
         <view class="flex-between m-t-10">
-          <view class="font-14">创建时间：</view>
+          <view class="font-14 col-666">创建时间：</view>
           <view class="font-14">
             <view class="font-bold">{{ item.createdTime }}</view>
           </view>
         </view>
         <view class="flex-between m-t-10">
-          <view class="font-14">类型：</view>
+          <view class="font-14 col-666">类型：</view>
           <view class="font-14">
-            <view class="font-bold" v-if="item.serviceType === 'BX'">报修</view>
-            <view class="font-bold" v-else-if="item.serviceType === 'TS'"
-              >投诉</view
-            >
-            <view class="font-bold" v-else-if="item.serviceType === 'ZX'"
-              >咨询</view
-            >
+            <view class="font-bold" v-if="item.serviceType === 'BX'">
+              <uni-tag text="报修" type="warning" />
+            </view>
+            <view class="font-bold" v-else-if="item.serviceType === 'TS'">
+              <uni-tag text="投诉" type="error" />
+            </view>
+            <view class="font-bold" v-else-if="item.serviceType === 'ZX'">
+              <uni-tag text="咨询" type="primary" />
+            </view>
           </view>
         </view>
         <view class="flex-between m-t-10">
-          <view class="font-14">联系人：</view>
-          <view class="font-14">
-            <view class="font-bold">{{ item.contactPerson }}</view>
-          </view>
-        </view>
-        <view class="flex-between m-t-10">
-          <view class="font-14">联系电话：</view>
+          <view class="font-14 col-666">联系电话：</view>
           <view class="font-14">
             <view class="font-bold">{{ item.contactPhone }}</view>
-          </view>
-        </view>
-        <view class="flex-between m-t-10">
-          <view class="font-14">描述：</view>
-          <view class="font-14">
-            <view class="font-bold">{{ item.description }}</view>
           </view>
         </view>
       </view>
@@ -115,7 +106,9 @@ export default {
       this.$request.get("/rest/report-repair/list", p).then(
         (res) => {
           this.list = res.data.data.map((item) => {
-            item.createdTime = dayjs(item.createdTime).format("YYYY-MM-DD HH:mm");
+            item.createdTime = dayjs(item.createdTime).format(
+              "YYYY-MM-DD HH:mm"
+            );
             return item;
           });
         },

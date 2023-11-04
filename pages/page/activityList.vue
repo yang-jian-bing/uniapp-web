@@ -11,7 +11,7 @@
       @clickRight="addActivity"
       left-icon="left"
     ></uni-nav-bar>
-    <view class="m-t-5">
+    <view class="m-t-5 b-g-f">
       <uni-segmented-control
         :current="current"
         :values="items"
@@ -27,26 +27,25 @@
         v-for="(item, index) in list"
         :key="index"
       >
-        <view class="flex-between m-t-10">
-          <view class="font-14">活动标题：</view>
-          <view class="font-14">
+        <view class="flex-between">
+          <view class="font-16">
             <view class="font-bold">{{ item.title }}</view>
           </view>
         </view>
         <view class="flex-between m-t-10">
-          <view class="font-14">活动地点：</view>
+          <view class="font-14 col-666">活动地点：</view>
           <view class="font-14">
             <view class="font-bold">{{ item.location }}</view>
           </view>
         </view>
 
         <view class="flex-between m-t-10">
-          <view class="font-14">联系方式：</view>
+          <view class="font-14 col-666">联系方式：</view>
           <view class="font-14">
             <view class="font-bold">{{ item.contactPhone }}</view>
           </view>
         </view>
-        <view class="flex-between m-t-10">
+        <!-- <view class="flex-between m-t-10">
           <view class="font-14">创建时间：</view>
           <view class="font-14">
             <view class="font-bold">{{ item.createdTime }}</view>
@@ -63,13 +62,7 @@
           <view class="font-14">
             <view class="font-bold">{{ item.endTime }}</view>
           </view>
-        </view>
-        <view class="flex-between m-t-10">
-          <view class="font-14">活动简介：</view>
-          <view class="font-14">
-            <view class="font-bold">{{ item.description }}</view>
-          </view>
-        </view>
+        </view> -->
       </view>
     </view>
     <view v-else class="text-center p-20"> 暂无数据 </view>

@@ -1,10 +1,10 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-03-15 23:19:37
+ * @LastEditTime: 2023-11-04 15:05:16
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
- * @FilePath: \app\pages\page\toBePaid.vue
+ * @FilePath: /uniapp-web/pages/page/toBePaid.vue
 -->
 <template>
   <view class="page">
@@ -25,7 +25,7 @@
         :key="index"
       >
         <view class="flex-between">
-          <view class="pay-list-item-title">费用类型</view>
+          <view class="font-16">费用类型</view>
           <view class="pay-property pay-type-item" v-if="item.type == 'WYF'"
             >物业费</view
           >
@@ -40,19 +40,19 @@
           >
         </view>
         <view class="flex-between m-t-10">
-          <view class="font-14">缴费金额：</view>
+          <view class="font-14 col-666">缴费金额：</view>
           <view class="font-14">
             <view class="font-bold">{{ item.amount }}</view>
           </view>
         </view>
         <view class="flex-between m-t-10">
-          <view class="font-14">缴费开始时间：</view>
+          <view class="font-14 col-666">缴费开始时间：</view>
           <view class="font-14">
             <view class="font-bold">{{ item.beginTime }}</view>
           </view>
         </view>
         <view class="flex-between m-t-10">
-          <view class="font-14">缴费结束时间：</view>
+          <view class="font-14 col-666">缴费结束时间：</view>
           <view class="font-14">
             <view class="font-bold">{{ item.endTime }}</view>
           </view>
