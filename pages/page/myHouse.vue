@@ -1,55 +1,27 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-04-08 02:14:45
+ * @LastEditTime: 2023-11-05 09:21:10
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
- * @FilePath: \app\pages\page\myHouse.vue
+ * @FilePath: /uniapp-web/pages/page/myHouse.vue
 -->
 <template>
-  <view class="page">
+  <view class="page home-box">
     <uni-nav-bar
       title="我的房屋"
       :fixed="true"
       :statusBar="true"
       color="#ffffff"
-      background-color="#dd2c34"
+      background-color="none"
       @clickLeft="back"
       left-icon="left"
     ></uni-nav-bar>
-    <!-- <view class="flex p-10">
-      <view
-        class="pay-type"
-        :class="[type === '' ? 'pay-electricity' : '']"
-        @click="payType('')"
-        >全部</view
-      >
-      <view
-        class="pay-type"
-        :class="[type === 'WYF' ? 'pay-electricity' : '']"
-        @click="payType('WYF')"
-        >物业费</view
-      >
-
-      <view
-        class="pay-type"
-        :class="[type === 'SF' ? 'pay-electricity' : '']"
-        @click="payType('SF')"
-        >水费</view
-      >
-      <view
-        class="pay-type"
-        :class="[type === 'CWGLF' ? 'pay-electricity' : '']"
-        @click="payType('CWGLF')"
-        >车位管理费</view
-      >
-      <view
-        class="pay-type"
-        :class="[type === 'CWGLF' ? 'pay-electricity' : '']"
-        @click="payType('QT')"
-        >其它</view
-      >
-    </view> -->
+    <view
+      class="header-min-box msg-search-box p-t-5 p-b-5"
+    >
+      <uni-search-bar placeholder="搜索" radius="100" bgColor="none" @confirm="search" />
+    </view>
     <view class="pay-list-box p-10 p-t-0" v-if="list.length > 0">
       <view
         class="pay-list-item"

@@ -1,34 +1,39 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-11-04 15:01:12
+ * @LastEditTime: 2023-11-05 09:11:56
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
  * @FilePath: /uniapp-web/pages/page/faultRepairReport.vue
 -->
 <template>
-  <view class="page">
+  <view class="page home-box">
     <uni-nav-bar
       title="故障报修"
       :fixed="true"
       :statusBar="true"
       color="#ffffff"
       rightText="新增"
-      background-color="#dd2c34"
+      background-color="none"
       @clickLeft="back"
       @clickRight="addFaultRepairReport"
       left-icon="left"
     ></uni-nav-bar>
-    <view class="m-t-5 b-g-f">
-      <uni-segmented-control
-        :current="current"
-        :values="items"
-        styleType="text"
-        @clickItem="onClickItem"
-        activeColor="#dd2c34"
-      ></uni-segmented-control>
+    <view
+      class="header-min-box msg-search-box p-t-5 p-b-5"
+    >
+      <uni-search-bar placeholder="搜索" radius="100" bgColor="none" @confirm="search" />
+      <!-- <view class="m-t-5 b-g-f">
+        <uni-segmented-control
+          :current="current"
+          :values="items"
+          styleType="text"
+          @clickItem="onClickItem"
+          activeColor="#dd2c34"
+        ></uni-segmented-control>
+      </view> -->
     </view>
-    <view class="pay-list-box p-10" v-if="list.length > 0">
+    <view class="pay-list-box p-10 p-t-0" v-if="list.length > 0">
       <view
         class="pay-list-item"
         @click="goPage(item)"

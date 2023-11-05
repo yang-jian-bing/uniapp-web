@@ -1,8 +1,12 @@
 <template>
-  <view class="myConter home-box"  style="background-size: 100% 27%">
-    <view class="header-min-box b-g-ee0a24"> </view>
-
-    <view class="main-box">
+  <view class="myConter home-box"  style="background-size: 100% 35%">
+    <view
+      class="header-min-box msg-search-box"
+      style="padding-top: 60px; padding-bottom: 5px;"
+    >
+      <uni-search-bar placeholder="搜索" radius="100" bgColor="none" @confirm="search" />
+    </view>
+    <view class="main-box m-10">
       <view
         class="module-icon"
         :key="index"
@@ -47,10 +51,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.home-box{
+  height: 100vh;
+}
 .main-box {
   display: flex;
   flex-wrap: wrap;
   background: #fff;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .module-icon {
   width: 20%;

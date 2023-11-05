@@ -1,23 +1,28 @@
 <!--
  * @Author: YangJianBing
  * @Date: 2021-10-23 11:32:53
- * @LastEditTime: 2023-11-04 15:05:16
+ * @LastEditTime: 2023-11-05 09:05:04
  * @LastEditors: YangJianBing
  * @Description: 待缴费列表
  * @FilePath: /uniapp-web/pages/page/toBePaid.vue
 -->
 <template>
-  <view class="page">
+  <view class="page home-box">
     <uni-nav-bar
       title="待缴费"
       :fixed="true"
       :statusBar="true"
       color="#ffffff"
-      background-color="#dd2c34"
+      background-color="none"
       @clickLeft="back"
       left-icon="left"
     ></uni-nav-bar>
-    <view class="pay-list-box p-10 p-t-0 m-t-10" v-if="list.length > 0">
+    <view
+      class="header-min-box msg-search-box p-t-5 p-b-5"
+    >
+      <uni-search-bar placeholder="搜索" radius="100" bgColor="none" @confirm="search" />
+    </view>
+    <view class="pay-list-box p-10 p-t-0 " v-if="list.length > 0">
       <view
         class="pay-list-item"
         @click="goPage(item)"
