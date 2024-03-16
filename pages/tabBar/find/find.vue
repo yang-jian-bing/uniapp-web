@@ -1,5 +1,5 @@
 <template>
-  <view class="myConter home-box"  style="background-size: 100% 35%">
+  <view class="myConter home-box" >
     <view
       class="header-min-box msg-search-box"
       style="padding-top: 60px; padding-bottom: 5px;"

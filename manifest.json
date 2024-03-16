@@ -2,8 +2,8 @@
     "name" : "橄榄海",
     "appid" : "__UNI__D95787D",
     "description" : "应用描述",
-    "versionName" : "1.0.62",
-    "versionCode" : 62,
+    "versionName" : "1.0.65",
+    "versionCode" : 65,
     "transformPx" : false,
     "app-plus" : {
         "usingComponents" : true,
@@ -20,13 +20,12 @@
         "modules" : {
             "Payment" : {},
             "Push" : {},
-            "Share" : {},
             "Speech" : {},
             "VideoPlayer" : {},
             "OAuth" : {},
             "Webview-x5" : {},
-            "Geolocation" : {},
-            "Maps" : {}
+            "Camera" : {},
+            "Share" : {}
         },
         "compatible" : {
             "ignoreVersion" : true //true表示忽略版本检查提示框，HBuilderX1.9.0及以上版本支持  
@@ -100,11 +99,50 @@
                         "appkey_ios" : "5e418fd3fd2ec7c81b48b9fcadaf0504",
                         "appkey_android" : "5e418fd3fd2ec7c81b48b9fcadaf0504"
                     }
-                }
+                },
+                "share" : {}
             },
             "orientation" : [ "portrait-primary" ],
             "splashscreen" : {
-                "androidStyle" : "common"
+                "androidStyle" : "default",
+                "android" : {
+                    "hdpi" : "/Users/yangjianbing/yangjb/work/文档/property/资料/logo-gg.png",
+                    "xhdpi" : "/Users/yangjianbing/yangjb/work/文档/property/资料/logo-gg.png",
+                    "xxhdpi" : "/Users/yangjianbing/yangjb/work/文档/property/资料/logo-gg.png"
+                },
+                "useOriginalMsgbox" : true
+            },
+            "icons" : {
+                "android" : {
+                    "hdpi" : "unpackage/res/icons/72x72.png",
+                    "xhdpi" : "unpackage/res/icons/96x96.png",
+                    "xxhdpi" : "unpackage/res/icons/144x144.png",
+                    "xxxhdpi" : "unpackage/res/icons/192x192.png"
+                },
+                "ios" : {
+                    "appstore" : "unpackage/res/icons/1024x1024.png",
+                    "ipad" : {
+                        "app" : "unpackage/res/icons/76x76.png",
+                        "app@2x" : "unpackage/res/icons/152x152.png",
+                        "notification" : "unpackage/res/icons/20x20.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png",
+                        "proapp@2x" : "unpackage/res/icons/167x167.png",
+                        "settings" : "unpackage/res/icons/29x29.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "spotlight" : "unpackage/res/icons/40x40.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png"
+                    },
+                    "iphone" : {
+                        "app@2x" : "unpackage/res/icons/120x120.png",
+                        "app@3x" : "unpackage/res/icons/180x180.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png",
+                        "notification@3x" : "unpackage/res/icons/60x60.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "settings@3x" : "unpackage/res/icons/87x87.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png",
+                        "spotlight@3x" : "unpackage/res/icons/120x120.png"
+                    }
+                }
             }
         },
         "uniStatistics" : {

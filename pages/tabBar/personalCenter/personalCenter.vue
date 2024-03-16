@@ -42,6 +42,16 @@
     <view class="p-20">
       <button type="warn" @click="logout">退出登录</button>
     </view>
+    <uni-popup ref="alertDialog" type="dialog" >
+      <uni-popup-dialog
+        type="warn"
+        cancelText="取消"
+        confirmText="确定"
+        title="提示"
+        content="您确定要删除？注销账号后，您的所有个人数据将被删除，包括个人资料、购买记录、评价等"
+        @confirm="confirmDelete"
+      ></uni-popup-dialog>
+    </uni-popup>
   </view>
 </template>
 
@@ -63,11 +73,11 @@ export default {
           page: "billToBePaidList",
           icon: require("@/assets/img/personalIcon/jfjl.png"),
         },
-        // {
-        //   text: "软件升级",
-        //   page: "update",
-        //   icon: require("@/assets/img/personalIcon/jfjl.png"),
-        // },
+        {
+          text: "注销账号",
+          page: "logOut",
+          icon: require("@/assets/img/personalIcon/jfjl.png"),
+        },
       ],
       userObj: {
         name: uni.getStorageSync("name"),
@@ -88,12 +98,33 @@ export default {
         });
         return;
       }
+      if (page === "logOut") {
+        this.$refs.alertDialog.open('center')
+        return;
+      }
       uni.navigateTo({
         // 关闭所有页面，打开首页
         url: `/pages/page/${page}`,
       });
     },
-
+    confirmDelete(){
+      this.$request.post("/rest/user/logout?checkSum=starlab").then(
+        (res) => {
+          uni.showToast({
+            title: "注销成功",
+            icon: "success",
+          });
+          uni.removeStorageSync("token");
+          uni.reLaunch({
+            // 关闭所有页面，打开首页
+            url: "/pages/API/login/login",
+          });
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    },
     toPageVer() {
       const obj = {
         orderNum: "34243243243",
